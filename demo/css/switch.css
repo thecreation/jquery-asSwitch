@@ -1,0 +1,128 @@
+.switch {
+  position: relative;
+}
+
+.switch .switch-inner {
+  width: 200px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.switch .switch-inner .switch-inner-box {
+  position: relative;
+  width: 300px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.switch .switch-inner .switch-inner-box .switch-box-on {
+  display: block;
+  float: left;
+  width: 150px;
+  height: 50px;
+  background-color: blue;
+}
+
+.switch .switch-inner .switch-inner-box .switch-box-off {
+  display: block;
+  float: left;
+  width: 150px;
+  height: 50px;
+  text-align: right;
+  background-color: #999;
+}
+
+.switch .switch-handle {
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 50px;
+  background-color: #666;
+}
+
+.switch .switch-disabled:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: #555;
+}
+
+.select .select-wrap {
+  width: 200px;
+  height: 80px;
+  overflow: hidden;
+  list-style: none;
+}
+
+.select .select-wrap li {
+  float: left;
+  width: 60px;
+  height: 40px;
+  text-align: center;
+  background-color: #888;
+}
+
+.select .select-wrap li a {
+  text-decoration: none;
+}
+
+.select .select-wrap .select-active {
+  background-color: red;
+}
+
+.chioce {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  margin: 10px;
+}
+
+.chioce input {
+  display: none;
+}
+
+.chioce .chioce-on {
+  float: left;
+  width: 150px;
+  height: 50px;
+  overflow: hidden;
+  text-align: left;
+  background-color: blue;
+}
+
+.chioce .chioce-on span {
+  width: 150px;
+  height: 50px;
+}
+
+.chioce .chioce-off {
+  float: left;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  text-align: right;
+  background-color: #999;
+}
+
+.chioce .chioce-off span {
+  width: 150px;
+  height: 50px;
+}
+
+.chioce .chioce-handle {
+  position: absolute;
+  top: 0;
+  left: 100px;
+  width: 100px;
+  background-color: #666;
+}
+
+.chioce:after {
+  width: 0;
+  height: 0;
+  clear: both;
+  content: '';
+}

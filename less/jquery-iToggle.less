@@ -1,0 +1,148 @@
+.switch {
+	
+	position: relative;
+
+	.switch-inner {
+		width: 200px;
+		height: 50px;
+
+		overflow: hidden;
+
+		.switch-inner-box {
+
+			position: relative;
+			width: 300px;
+			height: 50px;
+
+			overflow: hidden;
+
+			.switch-box-on {
+
+				display: block;
+				float: left;
+				width: 150px;
+				height: 50px;
+				background-color: blue;
+			}
+			.switch-box-off {
+
+				display: block;
+				float: left;
+				width: 150px;
+				height: 50px;
+				background-color: #999;
+				text-align: right;
+			}
+		}	
+	}
+
+	.switch-handle {
+		position: absolute;
+		top: 0;
+
+		width: 100px;
+		height: 50px;
+		background-color: #666;
+	}
+
+	.switch-disabled {
+		&:after {
+			width: 100%;
+			height: 100%;
+
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			z-index: 10;
+			background-color: #555;
+		}
+	}
+}
+
+.select {
+	.select-wrap {
+		width: 200px;
+		height: 80px;
+
+		list-style: none;
+		overflow: hidden;
+
+		li {
+			width: 60px;
+			height: 40px;
+
+			float: left;
+
+			text-align: center;
+			background-color: #888;
+
+			a {
+				text-decoration: none;
+			}
+		}
+
+		.select-active {
+			background-color: red;
+		}
+	}
+}
+
+.chioce {
+	width: 200px;
+	height: 50px;
+	position: relative;
+	margin: 10px;
+
+	input {
+		display: none;
+	}
+
+	.chioce-on {
+		width: 150px;
+		height: 50px;
+		overflow: hidden;
+
+		float: left;
+
+		span {
+			width: 150px;
+			height: 50px;
+		}
+
+		background-color: blue;
+		text-align: left;
+	}
+	.chioce-off {
+		width: 50px;
+		height: 50px;
+		overflow: hidden;
+
+		float: left;
+
+		span {
+			width: 150px;
+			height: 50px;
+		}
+
+		background-color: #999;
+		text-align: right;
+	}
+
+	.chioce-handle {
+		position: absolute;
+		top: 0px;
+		left: 100px;
+
+		width: 100px;
+		background-color: #666;
+	}
+
+	&:after {
+		width: 0;
+		height: 0;
+		content: '';
+		clear: both;
+	}
+}
+
