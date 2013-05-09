@@ -1,0 +1,108 @@
+.switch {
+  position: relative;
+  display: inline-block;
+}
+
+.switch > input {
+  display: none;
+}
+
+.switch .switch-inner {
+  width: 200px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.switch .switch-inner-box {
+  position: relative;
+  width: 300px;
+  height: 50px;
+  overflow: hidden;
+  transition: margin-left 0.3s ease-in-out 0s;
+}
+
+.switch .switch-on {
+  display: block;
+  float: left;
+  width: 150px;
+  height: 50px;
+  color: #000000;
+  background-color: #008000;
+}
+
+.switch .switch-off {
+  display: block;
+  float: left;
+  width: 150px;
+  height: 50px;
+  color: #000000;
+  text-align: right;
+  background-color: #ff0000;
+}
+
+.switch .switch-handle {
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 50px;
+  background-color: #000000;
+  transition: left 0.3s ease-in-out 0s;
+}
+
+.switch.skin-3 .switch-inner {
+  width: 68px;
+  height: 26px;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
+.switch.skin-3 .switch-inner-box {
+  position: relative;
+  width: 110px;
+  height: 26px;
+  -webkit-transition: margin-left 0.3s ease-in-out 0s;
+     -moz-transition: margin-left 0.3s ease-in-out 0s;
+          transition: margin-left 0.3s ease-in-out 0s;
+}
+
+.switch.skin-3 .switch-on {
+  width: 55px;
+  height: 26px;
+  padding-left: 13px;
+  font-family: "BPreplay", sans-serif;
+  font-size: 14px;
+  line-height: 26px;
+  color: #ffffff;
+  background-color: #7ebdcb;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.switch.skin-3 .switch-off {
+  width: 55px;
+  height: 26px;
+  padding-right: 10px;
+  font-family: "BPreplay", sans-serif;
+  font-size: 14px;
+  line-height: 26px;
+  color: #ffffff;
+  background-color: #cfcdc7;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.switch.skin-3 .switch-handle {
+  top: 2px;
+  width: 26px;
+  height: 26px;
+  background-color: #ffffff;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  -webkit-transition: left 0.3s ease-in-out 0s;
+     -moz-transition: left 0.3s ease-in-out 0s;
+          transition: left 0.3s ease-in-out 0s;
+}

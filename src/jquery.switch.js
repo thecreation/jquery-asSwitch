@@ -20,7 +20,7 @@
         this.options = $.extend({}, Switch.defaults, options, meta);
         this.namespace = this.options.namespace;
 
-        this.$element.addClass(this.namespace).addClass(this.namespace + '-' + this.options.skin);
+        this.$element.addClass(this.namespace).addClass(this.options.skin);
         this.checked = this.options.checked;
         this.state = this.options.state;
         this.initial = false;
@@ -36,8 +36,8 @@
 
             this.$inner = $('<div class="' + this.namespace + '-inner"></div>');
             this.$innerBox = $('<div class="' + this.namespace + '-inner-box"></div>');
-            this.$on = $('<div class="' + this.namespace + '-box-on">' + opts.ontext + '</div>');
-            this.$off = $('<div class="' + this.namespace + '-box-off">' + opts.offtext + '</div>');
+            this.$on = $('<div class="' + this.namespace + '-on">' + opts.ontext + '</div>');
+            this.$off = $('<div class="' + this.namespace + '-off">' + opts.offtext + '</div>');
             this.$handle = $('<div class="' + this.namespace + '-handle"></div>');
 
             this.$innerBox.append(this.$on,this.$off);
@@ -49,6 +49,8 @@
             var h = this.$handle.outerWidth(true);
 
             this.distance = w - h / 2;
+
+            console.log(w,h,this.distance)
 
             this.$innerBox.css(this._transitions('margin-left'));
             this.$handle.css(this._transitions('left'));
@@ -105,6 +107,8 @@
                     this.$input.trigger('checked');
                     this.$input.prop('checked',true);
                     this.move(0);
+                    this.$element.removeClass('is-off');
+                    this.$element.addClass('is-on');
                 break;
 
                 case 'unchecked':
@@ -112,6 +116,8 @@
                     this.$input.trigger('unchecked');
                     this.$input.prop('checked',false);
                     this.move(-this.distance);
+                    this.$element.removeClass('is-on');
+                    this.$element.addClass('is-off');
                 break;
 
             };
@@ -126,6 +132,7 @@
             this.$handle.css({
                 left: this.distance + pos
             });
+
         },
         click: function(e) {
 
@@ -230,7 +237,7 @@
         }
     };
     Switch.defaults = {
-        skin: 'simple',
+        skin: 'skin-3',
 
         dragable: true,
         clickable: true,

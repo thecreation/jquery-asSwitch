@@ -1,0 +1,271 @@
+// .switch {
+	
+// 	position: relative;
+
+// 	.switch-inner {
+// 		width: 200px;
+// 		height: 50px;
+
+// 		overflow: hidden;
+
+// 		.switch-inner-box {
+
+// 			position: relative;
+// 			width: 300px;
+// 			height: 50px;
+
+// 			overflow: hidden;
+
+// 			.switch-box-on {
+
+// 				display: block;
+// 				float: left;
+// 				width: 150px;
+// 				height: 50px;
+// 				background-color: blue;
+// 			}
+// 			.switch-box-off {
+
+// 				display: block;
+// 				float: left;
+// 				width: 150px;
+// 				height: 50px;
+// 				background-color: #999;
+// 				text-align: right;
+// 			}
+// 		}	
+// 	}
+
+// 	.switch-handle {
+// 		position: absolute;
+// 		top: 0;
+
+// 		width: 100px;
+// 		height: 50px;
+// 		background-color: #666;
+// 	}
+
+// 	.switch-disabled {
+// 		&:after {
+// 			width: 100%;
+// 			height: 100%;
+
+// 			position: absolute;
+// 			top: 0;
+// 			left: 0;
+
+// 			z-index: 10;
+// 			background-color: #555;
+// 		}
+// 	}
+// }
+
+// .select {
+// 	.select-wrap {
+// 		width: 200px;
+// 		height: 80px;
+
+// 		list-style: none;
+// 		overflow: hidden;
+
+// 		li {
+// 			width: 60px;
+// 			height: 40px;
+
+// 			float: left;
+
+// 			text-align: center;
+// 			background-color: #888;
+
+// 			a {
+// 				text-decoration: none;
+// 			}
+// 		}
+
+// 		.select-active {
+// 			background-color: red;
+// 		}
+// 	}
+// }
+
+// .chioce {
+// 	width: 200px;
+// 	height: 50px;
+// 	position: relative;
+// 	margin: 10px;
+
+// 	input {
+// 		display: none;
+// 	}
+
+// 	.chioce-on {
+// 		width: 150px;
+// 		height: 50px;
+// 		overflow: hidden;
+
+// 		float: left;
+
+// 		span {
+// 			width: 150px;
+// 			height: 50px;
+// 		}
+
+// 		background-color: blue;
+// 		text-align: left;
+// 	}
+// 	.chioce-off {
+// 		width: 50px;
+// 		height: 50px;
+// 		overflow: hidden;
+
+// 		float: left;
+
+// 		span {
+// 			width: 150px;
+// 			height: 50px;
+// 		}
+
+// 		background-color: #999;
+// 		text-align: right;
+// 	}
+
+// 	.chioce-handle {
+// 		position: absolute;
+// 		top: 0px;
+// 		left: 100px;
+
+// 		width: 100px;
+// 		background-color: #666;
+// 	}
+
+// 	&:after {
+// 		width: 0;
+// 		height: 0;
+// 		content: '';
+// 		clear: both;
+// 	}
+// }
+
+//core
+//================================================
+//core-var
+//=======================
+// @switchHeight: 50px;
+// @switchWidth: 200px;
+// @switchHandleWidth: 100px;
+// @switchInnerWidth: @switchWidth;
+// @switchBoxWidth: ( @switchInnerWidth - ( @switchHandleWidth / 2) ) * 2;
+// @switchOnWidth: @switchInnerWidth - ( @switchHandleWidth / 2);
+// @switchOffWidth: @switchInnerWidth - ( @switchHandleWidth / 2);
+
+// @switchOnBgColor: green;
+// @switchOffBgColor: red;
+// @switchHandleBgColor: black;
+
+// @switchOnTextColor: #000;
+// @switchOffTextColor: #000;
+//=======================
+
+
+.switch {
+	position: relative;
+	display: inline-block;
+	&:hover {
+		cursor: pointer;
+	}
+	>input {
+		display: none;
+	}
+
+	.switch-inner {
+		// height: @switchHeight;
+		// width: @switchInnerWidth;
+		overflow: hidden;
+	}
+
+	.switch-inner-box {
+		position: relative;
+		// height: @switchHeight;
+		// width: @switchBoxWidth;
+		// overflow: hidden;
+		// transition: margin-left 0.3s ease-in-out 0s;
+	}
+
+	.switch-on {
+		display: block;
+		float: left;
+		// height: @switchHeight;
+		// width: @switchOnWidth;
+		// color: @switchOnTextColor;
+		// background-color: @switchOnBgColor;
+	}
+	.switch-off {
+		display: block;
+		float: left;
+		// height: @switchHeight;
+		// width: @switchOffWidth;
+		// color: @switchOffTextColor;
+		// text-align: right;
+		// background-color: @switchOffBgColor;
+
+	}
+	.switch-handle {
+		position: absolute;
+		top: 0;
+
+		&:hover {
+			cursor: pointer;
+		}
+		// width: @switchHandleWidth;
+		// height: @switchHeight;
+		// background-color: @switchHandleBgColor;
+		// transition: left 0.3s ease-in-out 0s;
+	}
+
+	// &.is-on {
+	// 	.switch-inner-box {
+	// 		margin-left: 0;
+	// 	}
+	// 	.switch-handle {
+	// 		left: @switchInnerWidth - @switchHandleWidth;
+	// 	}
+	// }
+	
+	// &.is-off {
+	// 	.switch-inner-box {
+	// 		margin-left: @switchHandleWidth - @switchInnerWidth;
+	// 	}
+	// 	.switch-handle {
+	// 		left: 0;
+	// 	}
+	// }
+}
+
+//================================================
+
+//mixins
+//================================================
+// @import "./mixins.less";
+//================================================
+
+//switch-skins
+//================================================
+
+// @import "./switch-skin1.less";
+// @import "./switch-skin2.less";
+@import "./switch-skin3.less";
+// @import "./switch-skin4.less";
+// @import "./switch-skin5.less";
+// @import "./switch-skin6.less";
+// @import "./switch-skin7.less";
+ @import "./switch-skin8.less";
+// @import "./switch-skin9.less";
+// @import "./switch-skin10.less";
+// @import "./switch-skin11.less";
+// @import "./switch-skin12.less";
+// @import "./switch-skin13.less";
+// @import "./switch-skin14.less";
+// @import "./switch-skin15.less";
+// @import "./switch-skin16.less";
+// @import "./switch-skin17.less";
+//================================================

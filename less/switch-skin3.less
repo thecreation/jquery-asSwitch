@@ -1,0 +1,110 @@
+//skin-3-var
+//=======================
+@switchSkin3-Height: 26px;
+@switchSkin3-Width: 68px;
+@switchSkin3-HandleWidth: 26px;
+@switchSkin3-InnerWidth: @switchSkin3-Width;
+@switchSkin3-BoxWidth: ( @switchSkin3-InnerWidth - ( @switchSkin3-HandleWidth / 2) ) * 2;
+@switchSkin3-OnWidth: @switchSkin3-InnerWidth - ( @switchSkin3-HandleWidth / 2);
+@switchSkin3-OffWidth: @switchSkin3-InnerWidth - ( @switchSkin3-HandleWidth / 2);
+
+@switchSkin3-OnBgColor: #7ebdcb;
+@switchSkin3-OffBgColor: #cfcdc7;
+@switchSkin3-HandleBgColor: #fff;
+
+@switchSkin3-TextColor: #fff;
+
+@switchSkin3-FontSize: 14px;
+//=======================
+
+
+.switch.skin-3 {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+
+	.switch-inner {
+		height: @switchSkin3-Height;
+		width: @switchSkin3-InnerWidth;
+	}
+
+	.switch-inner-box {
+		height: @switchSkin3-Height;
+		width: @switchSkin3-BoxWidth;
+	}
+
+	.switch-on {
+		height: @switchSkin3-Height;
+		width: @switchSkin3-OnWidth;
+		text-indent: 13px;
+		line-height: @switchSkin3-Height;
+		font-family: "BPreplay",sans-serif;
+		font-size: @switchSkin3-FontSize;
+		color: @switchSkin3-TextColor;
+		background-color: @switchSkin3-OnBgColor;
+
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	.switch-off {
+		height: @switchSkin3-Height;
+		width: @switchSkin3-OffWidth;
+		text-indent: 24px;
+		line-height: @switchSkin3-Height;
+		font-family: "BPreplay",sans-serif;
+		font-size: @switchSkin3-FontSize;
+		color: @switchSkin3-TextColor;
+		background-color: @switchSkin3-OffBgColor;
+
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	.switch-handle {
+		width: @switchSkin3-HandleWidth;
+		height: @switchSkin3-Height;
+		background-color: @switchSkin3-HandleBgColor;
+
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	&.is-on {
+		background-color: @switchSkin3-OnBgColor;
+		border: 2px solid @switchSkin3-OnBgColor;
+		.switch-inner-box {
+			margin-left: 0;
+		}
+	
+		.switch-off {
+			background-color: @switchSkin3-OnBgColor;
+		}
+
+		.switch-handle {
+			left: @switchSkin3-InnerWidth - @switchSkin3-HandleWidth;
+		}
+	}
+	
+	&.is-off {
+			background-color: @switchSkin3-OffBgColor;
+			border: 2px solid @switchSkin3-OffBgColor;
+
+		.switch-inner-box {
+			margin-left: @switchSkin3-HandleWidth - @switchSkin3-InnerWidth;
+		}
+
+		.switch-on {
+			background-color: @switchSkin3-OffBgColor;
+		}
+
+		.switch-handle {
+			left: 0;
+		}
+	}
+}

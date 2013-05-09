@@ -76,54 +76,6 @@
     <input class="switch-input" type="checkbox" checked="checked" disabled="disabled" />
     
 
-    <div class="chioce">
-        <input type="checkbox" checked="checked" />
-        <div class="chioce-on"><span>on</span></div>
-        <div class="chioce-handle"></div>
-        <div class="chioce-off"><span>off</span></div>     
-    </div>
-
-
-
-    <select>
-        <option value ="default">default</option>
-        <option value ="on">on</option>
-        <option value="off">off</option>
-    </select>
-
-
-
-    <div class="select-box">
-        <select>
-            <option value ="default">default</option>
-            <option value ="on">on</option>
-            <option value="off">off</option>
-        </select>
-    </div>
-
-    <div id="test">
-        <div class="test-wrap">
-            <div class="test-1">test-1</div>
-            <div class="test-2">test-2</div>
-        </div>
-        <script type="text/javascript">
-            $('.test-wrap').on('click',function() {
-                if ($('.test-wrap').data('value') === 'blue') {
-                    $('.test-wrap').css({'background-color':'red'});
-                    $('.test-wrap').data('value','red');
-                } else {
-                    $('.test-wrap').css({'background-color':'blue'});
-                    $('.test-wrap').data('value','blue');
-                }
-            });
-            $('.test-1').on('click',function() {
-                return false;
-            });
-            $('.test-2').on('click',function() {
-                return false;
-            });
-        </script>
-    </div>
 </div>
 
 <script type="text/javascript">

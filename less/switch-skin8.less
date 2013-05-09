@@ -1,0 +1,99 @@
+//skin-8-var
+//=======================
+@switchSkin8-Height: 26px;
+@switchSkin8-Width: 68px;
+@switchSkin8-HandleWidth: 26px;
+@switchSkin8-InnerWidth: @switchSkin8-Width;
+@switchSkin8-BoxWidth: ( @switchSkin8-InnerWidth - ( @switchSkin8-HandleWidth / 2) ) * 2;
+@switchSkin8-OnWidth: @switchSkin8-InnerWidth - ( @switchSkin8-HandleWidth / 2);
+@switchSkin8-OffWidth: @switchSkin8-InnerWidth - ( @switchSkin8-HandleWidth / 2);
+
+@switchSkin8-BgColor: #323232;
+@switchSkin8-IsOnHandleBgColor: #27acd8;
+@switchSkin8-IsOffHandleBgColor: #fff;
+
+@switchSkin8-TextColor: #fff;
+
+@switchSkin8-FontSize: 14px;
+//=======================
+
+
+.switch.skin-8 {
+	background-color: @switchSkin8-BgColor;
+	border: 2px solid @switchSkin8-BgColor;
+
+	.switch-inner {
+		height: @switchSkin8-Height;		
+		width: @switchSkin8-InnerWidth;
+	}
+
+	.switch-inner-box {
+		height: @switchSkin8-Height;
+		width: @switchSkin8-BoxWidth;
+	}
+
+	.switch-on {
+		height: @switchSkin8-Height;
+		width: @switchSkin8-OnWidth;
+		text-indent: 13px;
+		line-height: @switchSkin8-Height;
+		font-family: "BPreplay",sans-serif;
+		font-size: @switchSkin8-FontSize;
+		color: @switchSkin8-TextColor;
+		background-color: @switchSkin8-BgColor;
+
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	.switch-off {
+		height: @switchSkin8-Height;
+		width: @switchSkin8-OffWidth;
+		text-indent: 24px;
+		line-height: @switchSkin8-Height;
+		font-family: "BPreplay",sans-serif;
+		font-size: @switchSkin8-FontSize;
+		color: @switchSkin8-TextColor;
+		background-color: @switchSkin8-BgColor;
+
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	.switch-handle {
+		width: @switchSkin8-HandleWidth;
+		height: @switchSkin8-Height;
+	}
+
+	&.is-on {
+		.switch-inner-box {
+			margin-left: 0;
+		}
+
+		// .switch-inner {
+		// 	background-color: @switchSkin8-BgColor;
+		// 	border: 2px solid @switchSkin8-BgColor;
+		// }
+
+		.switch-handle {
+			left: @switchSkin8-InnerWidth - @switchSkin8-HandleWidth;
+			background-color: @switchSkin8-IsOnHandleBgColor;
+		}
+	}
+	
+	&.is-off {
+		// .switch-inner {
+		// 	background-color: @switchSkin8-BgColor;
+		// 	border: 2px solid @switchSkin8-BgColor;
+		// }
+
+		.switch-inner-box {
+			margin-left: @switchSkin8-HandleWidth - @switchSkin8-InnerWidth;
+		}
+
+		.switch-handle {
+			left: 0;
+			background-color: @switchSkin8-IsOffHandleBgColor;
+		}
+	}
+}
