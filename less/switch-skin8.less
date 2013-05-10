@@ -3,10 +3,9 @@
 @switchSkin8-Height: 26px;
 @switchSkin8-Width: 68px;
 @switchSkin8-HandleWidth: 26px;
-@switchSkin8-InnerWidth: @switchSkin8-Width;
-@switchSkin8-BoxWidth: ( @switchSkin8-InnerWidth - ( @switchSkin8-HandleWidth / 2) ) * 2;
-@switchSkin8-OnWidth: @switchSkin8-InnerWidth - ( @switchSkin8-HandleWidth / 2);
-@switchSkin8-OffWidth: @switchSkin8-InnerWidth - ( @switchSkin8-HandleWidth / 2);
+@switchSkin8-BoxWidth: ( @switchSkin8-Width - ( @switchSkin8-HandleWidth / 2) ) * 2;
+@switchSkin8-OnWidth: @switchSkin8-Width - ( @switchSkin8-HandleWidth / 2);
+@switchSkin8-OffWidth: @switchSkin8-Width - ( @switchSkin8-HandleWidth / 2);
 
 @switchSkin8-BgColor: #323232;
 @switchSkin8-IsOnHandleBgColor: #27acd8;
@@ -19,13 +18,10 @@
 
 
 .switch.skin-8 {
+	height: @switchSkin8-Height;
+	width: @switchSkin8-Width;
 	background-color: @switchSkin8-BgColor;
-	border: 2px solid @switchSkin8-BgColor;
-
-	.switch-inner {
-		height: @switchSkin8-Height;		
-		width: @switchSkin8-InnerWidth;
-	}
+	border: 2px solid @switchSkin8-BgColor;	
 
 	.switch-inner-box {
 		height: @switchSkin8-Height;
@@ -41,10 +37,6 @@
 		font-size: @switchSkin8-FontSize;
 		color: @switchSkin8-TextColor;
 		background-color: @switchSkin8-BgColor;
-
-		-moz-box-sizing: border-box;
-		-webkit-box-sizing: border-box;
-		box-sizing: border-box;
 	}
 	.switch-off {
 		height: @switchSkin8-Height;
@@ -55,10 +47,6 @@
 		font-size: @switchSkin8-FontSize;
 		color: @switchSkin8-TextColor;
 		background-color: @switchSkin8-BgColor;
-
-		-moz-box-sizing: border-box;
-		-webkit-box-sizing: border-box;
-		box-sizing: border-box;
 	}
 	.switch-handle {
 		width: @switchSkin8-HandleWidth;
@@ -70,25 +58,16 @@
 			margin-left: 0;
 		}
 
-		// .switch-inner {
-		// 	background-color: @switchSkin8-BgColor;
-		// 	border: 2px solid @switchSkin8-BgColor;
-		// }
-
 		.switch-handle {
-			left: @switchSkin8-InnerWidth - @switchSkin8-HandleWidth;
+			left: @switchSkin8-Width - @switchSkin8-HandleWidth;
 			background-color: @switchSkin8-IsOnHandleBgColor;
 		}
 	}
 	
 	&.is-off {
-		// .switch-inner {
-		// 	background-color: @switchSkin8-BgColor;
-		// 	border: 2px solid @switchSkin8-BgColor;
-		// }
 
 		.switch-inner-box {
-			margin-left: @switchSkin8-HandleWidth - @switchSkin8-InnerWidth;
+			margin-left: @switchSkin8-HandleWidth - @switchSkin8-Width;
 		}
 
 		.switch-handle {

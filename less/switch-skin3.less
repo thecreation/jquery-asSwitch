@@ -3,10 +3,9 @@
 @switchSkin3-Height: 26px;
 @switchSkin3-Width: 68px;
 @switchSkin3-HandleWidth: 26px;
-@switchSkin3-InnerWidth: @switchSkin3-Width;
-@switchSkin3-BoxWidth: ( @switchSkin3-InnerWidth - ( @switchSkin3-HandleWidth / 2) ) * 2;
-@switchSkin3-OnWidth: @switchSkin3-InnerWidth - ( @switchSkin3-HandleWidth / 2);
-@switchSkin3-OffWidth: @switchSkin3-InnerWidth - ( @switchSkin3-HandleWidth / 2);
+@switchSkin3-BoxWidth: ( @switchSkin3-Width - ( @switchSkin3-HandleWidth / 2) ) * 2;
+@switchSkin3-OnWidth: @switchSkin3-Width - ( @switchSkin3-HandleWidth / 2);
+@switchSkin3-OffWidth: @switchSkin3-Width - ( @switchSkin3-HandleWidth / 2);
 
 @switchSkin3-OnBgColor: #7ebdcb;
 @switchSkin3-OffBgColor: #cfcdc7;
@@ -19,14 +18,10 @@
 
 
 .switch.skin-3 {
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
+	height: @switchSkin3-Height;
+	width: @switchSkin3-Width;
 
-	.switch-inner {
-		height: @switchSkin3-Height;
-		width: @switchSkin3-InnerWidth;
-	}
+	.border-radius(3px);
 
 	.switch-inner-box {
 		height: @switchSkin3-Height;
@@ -42,10 +37,6 @@
 		font-size: @switchSkin3-FontSize;
 		color: @switchSkin3-TextColor;
 		background-color: @switchSkin3-OnBgColor;
-
-		-moz-box-sizing: border-box;
-		-webkit-box-sizing: border-box;
-		box-sizing: border-box;
 	}
 	.switch-off {
 		height: @switchSkin3-Height;
@@ -56,23 +47,13 @@
 		font-size: @switchSkin3-FontSize;
 		color: @switchSkin3-TextColor;
 		background-color: @switchSkin3-OffBgColor;
-
-		-moz-box-sizing: border-box;
-		-webkit-box-sizing: border-box;
-		box-sizing: border-box;
 	}
 	.switch-handle {
 		width: @switchSkin3-HandleWidth;
 		height: @switchSkin3-Height;
 		background-color: @switchSkin3-HandleBgColor;
 
-		-webkit-border-radius: 3px;
-		-moz-border-radius: 3px;
-		border-radius: 3px;
-
-		&:hover {
-			cursor: pointer;
-		}
+		.border-radius(3px);
 	}
 
 	&.is-on {
@@ -87,7 +68,7 @@
 		}
 
 		.switch-handle {
-			left: @switchSkin3-InnerWidth - @switchSkin3-HandleWidth;
+			left: @switchSkin3-Width - @switchSkin3-HandleWidth;
 		}
 	}
 	
@@ -96,7 +77,7 @@
 			border: 2px solid @switchSkin3-OffBgColor;
 
 		.switch-inner-box {
-			margin-left: @switchSkin3-HandleWidth - @switchSkin3-InnerWidth;
+			margin-left: @switchSkin3-HandleWidth - @switchSkin3-Width;
 		}
 
 		.switch-on {

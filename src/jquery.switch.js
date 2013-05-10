@@ -45,8 +45,8 @@
             this.$element.append(this.$inner,this.$handle);
 
             // get components width
-            var w = this.$on.outerWidth(true);
-            var h = this.$handle.outerWidth(true);
+            var w = this.$on.width();
+            var h = this.$handle.width();
 
             this.distance = w - h / 2;
 
@@ -237,7 +237,7 @@
         }
     };
     Switch.defaults = {
-        skin: 'skin-3',
+        skin: 'skin-8',
 
         dragable: true,
         clickable: true,
@@ -259,69 +259,4 @@
     };
 }(jQuery));
 
-(function($) {
-    var Selects = $.select = function(select,options) {
 
-        this.element = select;
-        this.$element = $(select);
-
-        this.options = $.extend({},Selects.defaults,options);
-        this.namespace = this.options.namespace;
-        this.status = this.options.status.split(',');
-
-        this.$element.addClass(this.namespace).addClass(this.namespace + '-' + this.options.skin);
-        this.value = this.options.value;
-
-        this.init();
-    };
-
-    Selects.prototype = {
-        constuctor: Selects,
-        init: function() {
-            var self = this,
-                tpl = '<li><a href="#"></a></li>';
-
-            this.$element.find('select').css({display:'none'});
-
-            this.$wrap = $('<ul></ul>').addClass(this.namespace + '-wrap');
-            $.each(this.status,function(i,v) {
-                var $tpl = $(tpl).data('value',v).addClass(self.namespace + '-status-' + v).find('a').text(v).end();
-
-                self.$wrap.append($tpl);
-            });
-
-            this.$element.append(this.$wrap);
-
-            this.$wrap.delegate('li','click',function(){
-                self.set($(this).data('value'));
-            });
-
-            this.set(this.value);
-        },
-        set: function(value) {
-            if(this.value != value) {
-                this.$wrap.trigger('change',this);
-            }
-            this.value = value;
-            this.$wrap.find('li').removeClass(this.namespace + '-active');
-            this.$wrap.find('.' + this.namespace + '-status-' + value).addClass(this.namespace + '-active');
-        }
-    };
-
-    Selects.defaults = {
-        skin: 'simple',
-
-        status: 'default,on,off',
-        value: 'default',
-
-        namespace: 'select'
-
-    }
-    $.fn.select = function(options) {
-        return this.each(function() {
-            if (!$.data(this, 'select')) {
-                $.data(this, 'select', new Selects(this, options));
-            }
-        });
-    }
-}(jQuery));
