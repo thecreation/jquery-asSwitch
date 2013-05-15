@@ -84,7 +84,7 @@
         },
         _transitions: function(css) {
             var transitions,
-                transition = css + ' ' + this.options.animtime / 1000 + 's ease-in-out';
+                transition = css + ' ' + this.options.animation/ 1000 + 's ease-in-out';
             return transitions = {
                 '-webkit-transition': transition,
                 '-moz-transition': transition,
@@ -247,7 +247,7 @@
         offtext: 'OFF',
 
         checked: 'checked',
-        animtime: 300,
+        animation: 300,
         namespace: 'switch'
     };
     $.fn.switch = function(options) {

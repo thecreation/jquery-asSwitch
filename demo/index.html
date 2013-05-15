@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Switch</title>
+        <title>check</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
@@ -23,66 +23,76 @@
         <script src="js/vendor/bootstrap.js"></script>
 
         <script src="../src/jquery.switch.js"></script>
+        <style type="text/css">
+            input {
+                display: block;
+            }
+        </style>
     </head>
-
-    <style type="text/css">
-        #wrap {
-            width: 300px;
-            height: 300px;
-
-            padding: 20px;
-            margin: 20px auto;
-
-            border: 1px solid #000;
-        }
-        .switch-input {
-            display: none;
-        }
-        .select-box {
-            margin-top: 20px;
-        }
-
-        .test-wrap {
-            margin-top: 20px;
-        }
-        .test-1 {
-            width : 50px;
-            height: 50px;
-            margin: 5px;
-            background-color: #555;
-        }
-        .test-2 {
-            width: 50px;
-            height: 50px;
-            margin: 5px;
-            background-color: #888;
-        }
-
-
-        
-        
-    </style>
-    
-
 <body>
 <!--[if lt IE 7]>
     <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
 <![endif]-->
 
-<div id="wrap">
-    <div id="inner"></div>
+<div id="toc"></div>
+<div id="wrapper">
+    <section>
+        <h2>demo</h2>
+        
+        <section>
+            <h4>skin</h4>
+            <pre class="has-example"><code class="language-javascript">
+&lt;input class="switch-3" type="checkbox" checked="checked" /&gt;
+&lt;script&gt;                   
+    $(document).ready(function() {
+        $('.switch-3').switch({
+            skin: 'skin-3'
+        });   
+                      
+    });
+&lt;/script&gt;
+            </code></pre>
+            <div class="example">
+                <input class="switch-3" type="checkbox" checked="checked" />
+                <input class="switch-4" type="checkbox" checked="checked" />
+                <input class="switch-6" type="checkbox" checked="checked" />
+                <input class="switch-8" type="checkbox" checked="checked" />
+                <input class="switch-9" type="checkbox" checked="checked" />
+                <script>                   
+                    $(document).ready(function() {
+                        $('.switch-3').switch({
+                            skin: 'skin-3'
+                        });   
+                        $('.switch-4').switch({
+                            skin: 'skin-4'
+                        }); 
+                        $('.switch-6').switch({
+                            skin: 'skin-6'
+                        }); 
+                        $('.switch-8').switch({
+                            skin: 'skin-8'
+                        }); 
+                        $('.switch-9').switch({
+                            skin: 'skin-9'
+                        });               
+                    });
+                </script>
+            </div>
+           
+        </section>  
 
-    <input class="switch-input" type="checkbox" checked="checked" />
-    <input class="switch-input" type="checkbox" checked="checked" disabled="disabled" />
+    </section>
     
-
+      
+        
+        
+    
 </div>
 
-<script type="text/javascript">
-    $('.switch-input').switch();
+<script>
+(function(){
+    $('#toc').toc();
+    })();
 </script>
-    
-
-
 </body>
 </html>
