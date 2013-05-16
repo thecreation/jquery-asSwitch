@@ -63,6 +63,7 @@
 		background-image: url("../images/on-check.png");
 		background-position: 40% 50%;
 		background-repeat: no-repeat;
+		background-color: @switchSkin6-OnBgColor;
 	}
 	.switch-off {
 		height: @switchSkin6-Height;
@@ -78,6 +79,7 @@
 		background-image: url("../images/off-error.png");
 		background-position: 60% 50%;
 		background-repeat: no-repeat;
+		background-color: @switchSkin6-OffBgColor;
 	}
 	.switch-handle {
 		z-index: 999;
@@ -105,7 +107,7 @@
 	}
 
 	&.is-on {
-		background-color: @switchSkin6-OnBgColor;
+		// background-color: @switchSkin6-OnBgColor;
 		border: 1px solid lighten(@switchSkin6-OnBgColor,10%);;
 		border-top-color: darken(@switchSkin6-OnBgColor,20%);
 		border-left-color: darken(@switchSkin6-OnBgColor,20%);
@@ -119,7 +121,7 @@
 	}
 	
 	&.is-off {
-		background-color: @switchSkin6-OffBgColor;
+		// background-color: @switchSkin6-OffBgColor;
 		border: 1px solid lighten(@switchSkin6-OffBgColor,10%);;
 		border-top-color: darken(@switchSkin6-OffBgColor,20%);
 		border-right-color: darken(@switchSkin6-OffBgColor,20%);

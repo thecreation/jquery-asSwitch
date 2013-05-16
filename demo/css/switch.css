@@ -707,6 +707,7 @@ iframe[seamless] {
   color: transparent;
   text-indent: 100%;
   white-space: nowrap;
+  background-color: #40a5ec;
   background-image: url("../images/on-check.png");
   background-position: 40% 50%;
   background-repeat: no-repeat;
@@ -721,6 +722,7 @@ iframe[seamless] {
   color: transparent;
   text-indent: 100%;
   white-space: nowrap;
+  background-color: #888888;
   background-image: url("../images/off-error.png");
   background-position: 60% 50%;
   background-repeat: no-repeat;
@@ -761,7 +763,6 @@ iframe[seamless] {
 }
 
 .switch.skin-6.is-on {
-  background-color: #40a5ec;
   border: 1px solid #6ebbf1;
   border-top-color: #1271b4;
   border-left-color: #1271b4;
@@ -776,7 +777,6 @@ iframe[seamless] {
 }
 
 .switch.skin-6.is-off {
-  background-color: #888888;
   border: 1px solid #a2a2a2;
   border-top-color: #555555;
   border-right-color: #555555;

@@ -50,11 +50,8 @@
 
             this.distance = w - h / 2;
 
-            console.log(w,h,this.distance)
-
             this.$innerBox.css(this._transitions('margin-left'));
             this.$handle.css(this._transitions('left'));
-
             
             if (this.options.clickable === true) {
                 this.$element.on('click', $.proxy(this.click, this));
@@ -76,8 +73,6 @@
                 this.$handle.off('mousedown');
                 this.$element.addClass(this.namespace + '-disabled');
             }
-
-            console.log(this.state)
 
             this.set(this.checked);
             this.initial = true;
@@ -107,8 +102,12 @@
                     this.$input.trigger('checked');
                     this.$input.prop('checked',true);
                     this.move(0);
-                    this.$element.removeClass('is-off');
-                    this.$element.addClass('is-on');
+                    // function animateEnd() {
+                    //     this.$element.removeClass('is-off');
+                    //     this.$element.addClass('is-on');
+                    // }
+                    // this.animate(0, $.proxy(animateEnd, this));
+                    
                 break;
 
                 case 'unchecked':
@@ -116,11 +115,30 @@
                     this.$input.trigger('unchecked');
                     this.$input.prop('checked',false);
                     this.move(-this.distance);
-                    this.$element.removeClass('is-on');
-                    this.$element.addClass('is-off');
+
+                    // function animateEnd() {
+                    //     this.$element.removeClass('is-on');
+                    //     this.$element.addClass('is-off');
+                    // }
+                    // this.animate(-this.distance, $.proxy(animateEnd, this));
                 break;
 
             };
+        },
+
+        _set: function() {
+            switch(value) {
+                case 'checked':
+                    this.checked = value;
+                    this.$input.trigger('checked');
+                    this.$input.prop('checked',true);
+                break;
+                case 'unchecked':
+                    this.checked = value;
+                    this.$input.trigger('unchecked');
+                    this.$input.prop('checked',false);
+                break;
+            }
         },
         move: function(pos) {
             pos = Math.max(-this.distance, Math.min(pos, 0));
@@ -133,7 +151,30 @@
                 left: this.distance + pos
             });
 
+            // if (pos === 0) {
+            //     this.set('checked');
+            // }
+
+            // if (pos === -this.distance) {
+            //     this.set('unchecked');
+            // }
         },
+
+        animate: function(pos, callback) {
+            this.$innerBox.stop().animate({
+                marginLeft: pos
+            }, {
+                duration: this.options.duration
+            });
+
+            this.$handle.stop().animate({
+                left: this.distance + pos
+            }, {
+                duration: this.options.duration,
+                complete: callback
+            })
+        },
+
         click: function(e) {
 
             if (this.options.dragable === false && this.options.clickable === true) {
@@ -161,7 +202,7 @@
 
                
             this.mousemove = function(e) {
-                //dragDistance = e.pageX - startX > 0 ? (this.distance + startX - e.pageX) : (startX - e.pageX);
+                // dragDistance = e.pageX - startX > 0 ? (this.distance + startX - e.pageX) : (startX - e.pageX);
 
                 if (this.checked === 'checked') {
                     dragDistance = e.pageX - startX > 0 ? 0 : (e.pageX - startX < -this.distance ? -this.distance : e.pageX - startX);
@@ -171,6 +212,8 @@
 
                 this.$innerBox.css(this._noTransitions()); 
                 this.$handle.css(this._noTransitions()); 
+
+
                 this.$handle.off('mouseup');
                 this.move(dragDistance);
 
@@ -226,9 +269,9 @@
                 });
             }
 
-            
             return false;
         },
+        
         check: function() {
             this.set('checked');
         },
@@ -247,7 +290,7 @@
         offtext: 'OFF',
 
         checked: 'checked',
-        animation: 300,
+        animation: 200,
         namespace: 'switch'
     };
     $.fn.switch = function(options) {
