@@ -88,6 +88,67 @@
            
         </section>  
 
+        <section>
+            <h4>forbit click</h4>
+            <pre class="has-example"><code class="language-javascript">
+&lt;input class="switch-drag" type="checkbox" checked="checked" /&gt;
+&lt;script&gt;                   
+    $(document).ready(function() {
+        $('.switch-drag').switch({
+            dragable: true,
+            clickable: false,
+            skin: 'skin-6'
+        });   
+                      
+    });
+&lt;/script&gt;
+            </code></pre>
+            <div class="example">
+                <input class="switch-drag" type="checkbox" checked="checked" />
+                <script>                   
+                    $(document).ready(function() {
+                        $('.switch-drag').switch({
+                            dragable: true,
+                            clickable: false,
+                            skin: 'skin-6'
+                        });   
+                                    
+                    });
+                </script>
+            </div>
+        </section>
+
+        <section>
+            <h4>forbit drag</h4>
+            <pre class="has-example"><code class="language-javascript">
+&lt;input class="switch-click" type="checkbox" checked="checked" /&gt;
+&lt;script&gt;                   
+    $(document).ready(function() {
+        $('.switch-click').switch({
+            dragable: false,
+            clickable: true,
+            skin: 'skin-6'
+        });   
+                      
+    });
+&lt;/script&gt;
+            </code></pre>
+            <div class="example">
+                <input class="switch-click" type="checkbox" checked="checked" />
+                <script>                   
+                    $(document).ready(function() {
+                        $('.switch-click').switch({
+                            dragable: false,
+                            clickable: true,
+                            skin: 'skin-6'
+                        });   
+                                    
+                    });
+                </script>
+            </div>
+        </section>
+
+
     </section>
     
       

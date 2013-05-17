@@ -93,6 +93,9 @@
                 'transition': ''
             }
         },
+        _getDragPos: function(e){
+            return e.pageX || ((e.originalEvent.changedTouches) ? e.originalEvent.changedTouches[0].pageX : 0);
+        },
         set: function(value) {
 
             switch(value) {
@@ -102,12 +105,6 @@
                     this.$input.trigger('checked');
                     this.$input.prop('checked',true);
                     this.move(0);
-                    // function animateEnd() {
-                    //     this.$element.removeClass('is-off');
-                    //     this.$element.addClass('is-on');
-                    // }
-                    // this.animate(0, $.proxy(animateEnd, this));
-                    
                 break;
 
                 case 'unchecked':
@@ -115,31 +112,11 @@
                     this.$input.trigger('unchecked');
                     this.$input.prop('checked',false);
                     this.move(-this.distance);
-
-                    // function animateEnd() {
-                    //     this.$element.removeClass('is-on');
-                    //     this.$element.addClass('is-off');
-                    // }
-                    // this.animate(-this.distance, $.proxy(animateEnd, this));
                 break;
 
             };
         },
 
-        _set: function() {
-            switch(value) {
-                case 'checked':
-                    this.checked = value;
-                    this.$input.trigger('checked');
-                    this.$input.prop('checked',true);
-                break;
-                case 'unchecked':
-                    this.checked = value;
-                    this.$input.trigger('unchecked');
-                    this.$input.prop('checked',false);
-                break;
-            }
-        },
         move: function(pos) {
             pos = Math.max(-this.distance, Math.min(pos, 0));
 
@@ -150,31 +127,7 @@
             this.$handle.css({
                 left: this.distance + pos
             });
-
-            // if (pos === 0) {
-            //     this.set('checked');
-            // }
-
-            // if (pos === -this.distance) {
-            //     this.set('unchecked');
-            // }
         },
-
-        animate: function(pos, callback) {
-            this.$innerBox.stop().animate({
-                marginLeft: pos
-            }, {
-                duration: this.options.duration
-            });
-
-            this.$handle.stop().animate({
-                left: this.distance + pos
-            }, {
-                duration: this.options.duration,
-                complete: callback
-            })
-        },
-
         click: function(e) {
 
             if (this.options.dragable === false && this.options.clickable === true) {
@@ -198,16 +151,18 @@
         mousedown: function(e) {
             var dragDistance,
                 self = this,
-                startX = e.pageX;
+                startX = this._getDragPos(e);
 
                
             this.mousemove = function(e) {
                 // dragDistance = e.pageX - startX > 0 ? (this.distance + startX - e.pageX) : (startX - e.pageX);
 
+                var current = this._getDragPos(e);
+
                 if (this.checked === 'checked') {
-                    dragDistance = e.pageX - startX > 0 ? 0 : (e.pageX - startX < -this.distance ? -this.distance : e.pageX - startX);
+                    dragDistance = current - startX > 0 ? 0 : (current - startX < -this.distance ? -this.distance : current - startX);
                 } else {
-                    dragDistance = e.pageX - startX < 0 ? -this.distance : (e.pageX - startX > this.distance ? 0 : -this.distance + e.pageX - startX);
+                    dragDistance = current - startX < 0 ? -this.distance : (current - startX > this.distance ? 0 : -this.distance + current - startX);
                 }
 
                 this.$innerBox.css(this._noTransitions()); 
