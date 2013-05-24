@@ -56,10 +56,14 @@
 
             if (this.options.clickable === true) {
                 this.$element.on('click touchstart', $.proxy(this.click, this));
+                
             }
 
             if (this.options.dragable === true) {
                 this.$handle.on('mousedown touchstart', $.proxy(this.mousedown, this));
+                this.$handle.on('click', function() {
+                    return false;
+                });
             }
 
             // for support mobile touch
@@ -79,13 +83,16 @@
             this.initial = true;
         },
         animate: function(pos, callback) {
-
-            this.$innerBox.stop().animate({marginLeft: pos},{
+            this.$innerBox.stop().animate({
+                marginLeft: pos
+            }, {
                 duration: this.options.animation,
                 complete: callback
             });
 
-            this.$handle.stop().animate({left: this.distance + pos}, {
+            this.$handle.stop().animate({
+                left: this.distance + pos
+            }, {
                 duration: this.options.animation
             });
         },
@@ -102,7 +109,6 @@
                     this.$input.trigger('checked');
                     this.$input.prop('checked', true);
                     // this.move(0);
-                    console.log(value)
                     this.animate(0);
                     break;
 
@@ -112,6 +118,7 @@
                     this.$input.prop('checked', false);
                     // this.move(-this.distance);
                     this.animate(-this.distance);
+
                     break;
 
             }
@@ -129,8 +136,6 @@
             });
         },
         click: function(e) {
-
-            console.log('click')
 
             if (this._click === false) {
                 this._click = true;
@@ -150,12 +155,12 @@
                 self = this,
                 startX = this._getDragPos(e);
 
-            console.log('mousedown')
+
+
+            //this._click = false;
 
             this.mousemove = function(e) {
                 var current = this._getDragPos(e);
-
-                this._click = false;
 
                 if (this.checked === 'checked') {
                     dragDistance = current - startX > 0 ? 0 : (current - startX < -this.distance ? -this.distance : current - startX);
@@ -165,6 +170,8 @@
 
                 this.move(dragDistance);
 
+                this.$handle.off('mouseup');
+
                 return false;
             };
 
@@ -172,12 +179,10 @@
                 var currPos = parseInt(this.$innerBox.css('margin-left'), 10);
 
                 if (Math.abs(currPos) >= this.distance / 2) {
-                    console.log('unchecked');
                     this.set('unchecked');
                 }
 
                 if (Math.abs(currPos) < this.distance / 2) {
-                    console.log('checked');
                     this.set('checked');
                 }
 
@@ -188,6 +193,7 @@
                     touchend: this.mouseup
                 });
 
+                this.$handle.off('mouseup');
 
                 return false;
             };
@@ -199,6 +205,29 @@
                 touchend: $.proxy(this.mouseup, this)
             });
 
+            if (this.options.clickable === true) {
+                this.$handle.on('mouseup touchend', function() {
+
+                    if (self.checked === 'checked') {
+                        self.set('unchecked');
+                    } else {
+                        self.set('checked');
+                    }
+
+                    self.$handle.off('mouseup touchend');
+
+                    $(document).off({
+                        mousemove: this.mousemove,
+                        mouseup: this.mouseup,
+                        touchmove: this.mousemove,
+                        touchend: this.mouseup
+                    });
+                });
+
+            }
+
+
+            return false;
         },
 
         check: function() {
