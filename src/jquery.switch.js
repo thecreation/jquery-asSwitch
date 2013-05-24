@@ -27,6 +27,9 @@
         this.state = this.options.state;
         this.initial = false;
 
+        // flag
+        this._click = true;
+
         this.init();
     };
 
@@ -50,9 +53,6 @@
             var h = this.$handle.width();
 
             this.distance = w - h / 2;
-
-            // this.$innerBox.css(this._transitions('margin-left'));
-            // this.$handle.css(this._transitions('left'));
 
             if (this.options.clickable === true) {
                 this.$element.on('click touchstart', $.proxy(this.click, this));
@@ -89,22 +89,7 @@
                 duration: this.options.animation
             });
         },
-        // _transitions: function(css) {
-        //     var transitions,
-        //         transition = css + ' ' + this.options.animation / 1000 + 's ease-in-out';
-        //     return transitions = {
-        //         '-webkit-transition': transition,
-        //         '-moz-transition': transition,
-        //         'transition': transition
-        //     };
-        // },
-        // _noTransitions: function() {
-        //     return {
-        //         '-webkit-transition': '',
-        //         '-moz-transition': '',
-        //         'transition': ''
-        //     };
-        // },
+
         _getDragPos: function(e) {
             return e.pageX || ((e.originalEvent.changedTouches) ? e.originalEvent.changedTouches[0].pageX : 0);
         },
@@ -117,6 +102,7 @@
                     this.$input.trigger('checked');
                     this.$input.prop('checked', true);
                     // this.move(0);
+                    console.log(value)
                     this.animate(0);
                     break;
 
@@ -144,34 +130,32 @@
         },
         click: function(e) {
 
-            if (this.options.dragable === false && this.options.clickable === true) {
+            console.log('click')
 
-                if (this.checked === 'checked') {
-                    this.set('unchecked');
-                } else {
-                    this.set('checked');
-                }
-            } else {
-                if ($(e.target).hasClass(this.namespace + '-handle') !== true) {
-
-                    if (this.checked === 'checked') {
-                        this.set('unchecked');
-                    } else {
-                        this.set('checked');
-                    }
-                }
+            if (this._click === false) {
+                this._click = true;
+                return false;
             }
+
+            if (this.checked === 'checked') {
+                this.set('unchecked');
+            } else {
+                this.set('checked');
+            }
+
+            return false;
         },
         mousedown: function(e) {
             var dragDistance,
                 self = this,
                 startX = this._getDragPos(e);
 
+            console.log('mousedown')
 
             this.mousemove = function(e) {
-                // dragDistance = e.pageX - startX > 0 ? (this.distance + startX - e.pageX) : (startX - e.pageX);
-
                 var current = this._getDragPos(e);
+
+                this._click = false;
 
                 if (this.checked === 'checked') {
                     dragDistance = current - startX > 0 ? 0 : (current - startX < -this.distance ? -this.distance : current - startX);
@@ -179,11 +163,6 @@
                     dragDistance = current - startX < 0 ? -this.distance : (current - startX > this.distance ? 0 : -this.distance + current - startX);
                 }
 
-                // this.$innerBox.css(this._noTransitions());
-                // this.$handle.css(this._noTransitions());
-
-
-                this.$handle.off('mouseup touchend');
                 this.move(dragDistance);
 
                 return false;
@@ -193,10 +172,12 @@
                 var currPos = parseInt(this.$innerBox.css('margin-left'), 10);
 
                 if (Math.abs(currPos) >= this.distance / 2) {
+                    console.log('unchecked');
                     this.set('unchecked');
                 }
 
                 if (Math.abs(currPos) < this.distance / 2) {
+                    console.log('checked');
                     this.set('checked');
                 }
 
@@ -207,9 +188,6 @@
                     touchend: this.mouseup
                 });
 
-                // this.$innerBox.css(this._transitions('margin-left'));
-                // this.$handle.css(this._transitions('left'));
-                this.$handle.off('mouseup touchend');
 
                 return false;
             };
@@ -221,28 +199,6 @@
                 touchend: $.proxy(this.mouseup, this)
             });
 
-            if (this.options.clickable === true) {
-
-                this.$handle.on('mouseup touchend', function() {
-
-                    if (self.checked === 'checked') {
-                        self.set('unchecked');
-                    } else {
-                        self.set('checked');
-                    }
-
-                    $(document).off({
-                        mousemove: this.mousemove,
-                        mouseup: this.mouseup
-                    });
-
-                    self.$handle.off('mouseup touchend');
-
-                    return false;
-                });
-            }
-
-            return false;
         },
 
         check: function() {
