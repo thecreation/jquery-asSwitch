@@ -7,9 +7,11 @@
  */
 
 (function($) {
-    var Switch = $.switch = function(input, options) {
+    "use strict";
 
-        this.$input = $(input).wrap('<div></div>');        
+    var Switch = $.sw = function(input, options) {
+
+        this.$input = $(input).wrap('<div></div>');
         this.$element = this.$input.parent();
 
         var meta = {
@@ -31,8 +33,7 @@
     Switch.prototype = {
         constuctor: Switch,
         init: function() {
-            var self = this,
-                opts = this.options;
+            var opts = this.options;
 
             this.$inner = $('<div class="' + this.namespace + '-inner"></div>');
             this.$innerBox = $('<div class="' + this.namespace + '-inner-box"></div>');
@@ -40,9 +41,9 @@
             this.$off = $('<div class="' + this.namespace + '-off">' + opts.offtext + '</div>');
             this.$handle = $('<div class="' + this.namespace + '-handle"></div>');
 
-            this.$innerBox.append(this.$on,this.$off);
+            this.$innerBox.append(this.$on, this.$off);
             this.$inner.append(this.$innerBox);
-            this.$element.append(this.$inner,this.$handle);
+            this.$element.append(this.$inner, this.$handle);
 
             // get components width
             var w = this.$on.width();
@@ -50,16 +51,16 @@
 
             this.distance = w - h / 2;
 
-            this.$innerBox.css(this._transitions('margin-left'));
-            this.$handle.css(this._transitions('left'));
-            
+            // this.$innerBox.css(this._transitions('margin-left'));
+            // this.$handle.css(this._transitions('left'));
+
             if (this.options.clickable === true) {
-                this.$element.on('click', $.proxy(this.click, this));
-            } 
+                this.$element.on('click touchstart', $.proxy(this.click, this));
+            }
 
             if (this.options.dragable === true) {
-                this.$handle.on('mousedown', $.proxy(this.mousedown, this));
-            } 
+                this.$handle.on('mousedown touchstart', $.proxy(this.mousedown, this));
+            }
 
             // for support mobile touch
             // ...
@@ -69,52 +70,65 @@
             // set initial status and value
 
             if (this.state === 'disabled') {
-                this.$element.off('click');
-                this.$handle.off('mousedown');
+                this.$element.off('click touchstart');
+                this.$handle.off('mousedown touchstart');
                 this.$element.addClass(this.namespace + '-disabled');
             }
 
             this.set(this.checked);
             this.initial = true;
         },
-        _transitions: function(css) {
-            var transitions,
-                transition = css + ' ' + this.options.animation/ 1000 + 's ease-in-out';
-            return transitions = {
-                '-webkit-transition': transition,
-                '-moz-transition': transition,
-                'transition': transition
-            };
+        animate: function(pos, callback) {
+
+            this.$innerBox.stop().animate({marginLeft: pos},{
+                duration: this.options.animation,
+                complete: callback
+            });
+
+            this.$handle.stop().animate({left: this.distance + pos}, {
+                duration: this.options.animation
+            });
         },
-        _noTransitions: function() {
-            return {
-                '-webkit-transition': '',
-                '-moz-transition': '',
-                'transition': ''
-            }
-        },
-        _getDragPos: function(e){
+        // _transitions: function(css) {
+        //     var transitions,
+        //         transition = css + ' ' + this.options.animation / 1000 + 's ease-in-out';
+        //     return transitions = {
+        //         '-webkit-transition': transition,
+        //         '-moz-transition': transition,
+        //         'transition': transition
+        //     };
+        // },
+        // _noTransitions: function() {
+        //     return {
+        //         '-webkit-transition': '',
+        //         '-moz-transition': '',
+        //         'transition': ''
+        //     };
+        // },
+        _getDragPos: function(e) {
             return e.pageX || ((e.originalEvent.changedTouches) ? e.originalEvent.changedTouches[0].pageX : 0);
         },
         set: function(value) {
 
-            switch(value) {
+            switch (value) {
 
                 case 'checked':
                     this.checked = value;
                     this.$input.trigger('checked');
-                    this.$input.prop('checked',true);
-                    this.move(0);
-                break;
+                    this.$input.prop('checked', true);
+                    // this.move(0);
+                    this.animate(0);
+                    break;
 
                 case 'unchecked':
                     this.checked = value;
                     this.$input.trigger('unchecked');
-                    this.$input.prop('checked',false);
-                    this.move(-this.distance);
-                break;
+                    this.$input.prop('checked', false);
+                    // this.move(-this.distance);
+                    this.animate(-this.distance);
+                    break;
 
-            };
+            }
         },
 
         move: function(pos) {
@@ -138,7 +152,7 @@
                     this.set('checked');
                 }
             } else {
-                if ($(e.target).hasClass(this.namespace + '-handle') != true) {
+                if ($(e.target).hasClass(this.namespace + '-handle') !== true) {
 
                     if (this.checked === 'checked') {
                         this.set('unchecked');
@@ -146,14 +160,14 @@
                         this.set('checked');
                     }
                 }
-            }   
+            }
         },
         mousedown: function(e) {
             var dragDistance,
                 self = this,
                 startX = this._getDragPos(e);
 
-               
+
             this.mousemove = function(e) {
                 // dragDistance = e.pageX - startX > 0 ? (this.distance + startX - e.pageX) : (startX - e.pageX);
 
@@ -165,18 +179,18 @@
                     dragDistance = current - startX < 0 ? -this.distance : (current - startX > this.distance ? 0 : -this.distance + current - startX);
                 }
 
-                this.$innerBox.css(this._noTransitions()); 
-                this.$handle.css(this._noTransitions()); 
+                // this.$innerBox.css(this._noTransitions());
+                // this.$handle.css(this._noTransitions());
 
 
-                this.$handle.off('mouseup');
+                this.$handle.off('mouseup touchend');
                 this.move(dragDistance);
 
                 return false;
             };
 
-            this.mouseup = function(e) {
-                var currPos = parseInt(this.$innerBox.css('margin-left'));
+            this.mouseup = function() {
+                var currPos = parseInt(this.$innerBox.css('margin-left'), 10);
 
                 if (Math.abs(currPos) >= this.distance / 2) {
                     this.set('unchecked');
@@ -184,28 +198,32 @@
 
                 if (Math.abs(currPos) < this.distance / 2) {
                     this.set('checked');
-                } 
+                }
 
                 $(document).off({
                     mousemove: this.mousemove,
-                    mouseup: this.mouseup
+                    mouseup: this.mouseup,
+                    touchmove: this.mousemove,
+                    touchend: this.mouseup
                 });
 
-                this.$innerBox.css(this._transitions('margin-left'));
-                this.$handle.css(this._transitions('left'));
-                this.$handle.off('mouseup');
+                // this.$innerBox.css(this._transitions('margin-left'));
+                // this.$handle.css(this._transitions('left'));
+                this.$handle.off('mouseup touchend');
 
                 return false;
             };
 
             $(document).on({
                 mousemove: $.proxy(this.mousemove, this),
-                mouseup: $.proxy(this.mouseup, this)
+                mouseup: $.proxy(this.mouseup, this),
+                touchmove: $.proxy(this.mousemove, this),
+                touchend: $.proxy(this.mouseup, this)
             });
 
             if (this.options.clickable === true) {
 
-                this.$handle.on('mouseup', function() {
+                this.$handle.on('mouseup touchend', function() {
 
                     if (self.checked === 'checked') {
                         self.set('unchecked');
@@ -218,7 +236,7 @@
                         mouseup: this.mouseup
                     });
 
-                    self.$handle.off('mouseup');
+                    self.$handle.off('mouseup touchend');
 
                     return false;
                 });
@@ -226,10 +244,11 @@
 
             return false;
         },
-        
+
         check: function() {
             this.set('checked');
         },
+
         uncheck: function() {
             this.set('unchecked');
         }
@@ -248,7 +267,8 @@
         animation: 200,
         namespace: 'switch'
     };
-    $.fn.switch = function(options) {
+
+    $.fn.sw = function(options) {
         return this.each(function() {
             if (!$.data(this, 'switch')) {
                 $.data(this, 'switch', new Switch(this, options));
@@ -256,5 +276,3 @@
         });
     };
 }(jQuery));
-
-

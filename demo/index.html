@@ -27,6 +27,24 @@
             input {
                 display: block;
             }
+
+            .test {
+                position: relative;
+
+                width: 200px;
+                height: 30px;
+
+                background-color: #333;
+            }
+            .test span {
+                position: absolute;
+                top: 0;
+
+                width: 30px;
+                height: 30px;
+
+                background-color: blue;
+            }
         </style>
     </head>
 <body>
@@ -42,10 +60,10 @@
         <section>
             <h4>skin</h4>
             <pre class="has-example"><code class="language-javascript">
-&lt;input class="switch-3" type="checkbox" checked="checked" /&gt;
+&lt;input class="sw-3" type="checkbox" checked="checked" /&gt;
 &lt;script&gt;                   
     $(document).ready(function() {
-        $('.switch-3').switch({
+        $('.sw-3').sw({
             skin: 'skin-3'
         });   
                       
@@ -53,10 +71,10 @@
 &lt;/script&gt;
             </code></pre>
             <div class="example">
-                <input class="switch-3" type="checkbox" checked="checked" />
+                <input class="sw-3" type="checkbox" checked="checked" />
                 <script>                   
                     $(document).ready(function() {
-                        $('.switch-3').switch({
+                        $('.sw-3').sw({
                             skin: 'skin-3'
                         });   
                                     
@@ -64,10 +82,10 @@
                 </script>
             </div>
             <div class="example">
-                <input class="switch-6" type="checkbox" checked="checked" />
+                <input class="sw-6" type="checkbox" checked="checked" />
                 <script>                   
                     $(document).ready(function() {                    
-                        $('.switch-6').switch({
+                        $('.sw-6').sw({
                             skin: 'skin-6'
                         }); 
                                        
@@ -75,10 +93,10 @@
                 </script>
             </div>
             <div class="example">
-                <input class="switch-9" type="checkbox" checked="checked" />
+                <input class="sw-9" type="checkbox" checked="checked" />
                 <script>                   
                     $(document).ready(function() {                    
-                        $('.switch-9').switch({
+                        $('.sw-9').sw({
                             skin: 'skin-9'
                         }); 
                                        
@@ -91,10 +109,10 @@
         <section>
             <h4>forbit click</h4>
             <pre class="has-example"><code class="language-javascript">
-&lt;input class="switch-drag" type="checkbox" checked="checked" /&gt;
+&lt;input class="sw-drag" type="checkbox" checked="checked" /&gt;
 &lt;script&gt;                   
     $(document).ready(function() {
-        $('.switch-drag').switch({
+        $('.sw-drag').sw({
             dragable: true,
             clickable: false,
             skin: 'skin-6'
@@ -104,10 +122,10 @@
 &lt;/script&gt;
             </code></pre>
             <div class="example">
-                <input class="switch-drag" type="checkbox" checked="checked" />
+                <input class="sw-drag" type="checkbox" checked="checked" />
                 <script>                   
                     $(document).ready(function() {
-                        $('.switch-drag').switch({
+                        $('.sw-drag').sw({
                             dragable: true,
                             clickable: false,
                             skin: 'skin-6'
@@ -121,10 +139,10 @@
         <section>
             <h4>forbit drag</h4>
             <pre class="has-example"><code class="language-javascript">
-&lt;input class="switch-click" type="checkbox" checked="checked" /&gt;
+&lt;input class="sw-click" type="checkbox" checked="checked" /&gt;
 &lt;script&gt;                   
     $(document).ready(function() {
-        $('.switch-click').switch({
+        $('.sw-click').sw({
             dragable: false,
             clickable: true,
             skin: 'skin-6'
@@ -134,10 +152,10 @@
 &lt;/script&gt;
             </code></pre>
             <div class="example">
-                <input class="switch-click" type="checkbox" checked="checked" />
+                <input class="sw-click" type="checkbox" checked="checked" />
                 <script>                   
                     $(document).ready(function() {
-                        $('.switch-click').switch({
+                        $('.sw-click').sw({
                             dragable: false,
                             clickable: true,
                             skin: 'skin-6'
@@ -148,6 +166,22 @@
             </div>
         </section>
 
+        <section>
+            <h4>test touch</h4>
+            <div class="example">
+                <div class="test"><span>handle</span></div>
+                <script>                   
+                    $(document).ready(function(e) {
+                        $('.test span').on('touchstart', function(e) {
+                            console.log(e)
+                        });
+
+                                                            
+                    });
+                </script>
+            </div>
+
+        </section>
 
     </section>
     
