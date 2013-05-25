@@ -83,6 +83,19 @@
             this.initial = true;
         },
         animate: function(pos, callback) {
+
+            // prevent animate when first load
+            if (this.initial === false) {
+                this.$innerBox.css({
+                    marginLeft: pos
+                });
+
+                this.$handle.css({
+                    left: this.distance + pos
+                });
+                return false;
+            }
+
             this.$innerBox.stop().animate({
                 marginLeft: pos
             }, {
