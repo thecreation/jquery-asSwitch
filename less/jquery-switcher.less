@@ -1,0 +1,87 @@
+//reset
+//================================================
+@import "./reset.less";
+
+//core
+//================================================
+.switch {
+	position: relative;
+	display: inline-block;
+	&:hover {
+		cursor: pointer;
+	}
+	>input {
+		display: none;
+	}
+
+	.switch-inner {
+		overflow: hidden;
+	}
+
+	// .switch-inner-box {
+	// 	position: relative;
+	// }
+
+	.switch-on {
+		display: block;
+		float: left;
+
+		.user-select(none);
+	}
+	.switch-off {
+		display: block;
+		float: left;
+
+		.user-select(none);
+	}
+	.switch-handle {
+		position: absolute;
+		top: 0;
+
+		&:hover {
+			cursor: pointer;
+			cursor: -moz-grab;
+		}
+	}
+
+	// &.is-on {
+	// 	.switch-inner-box {
+	// 		margin-left: 0;
+	// 	}
+	// 	.switch-handle {
+	// 		left: @switchInnerWidth - @switchHandleWidth;
+	// 	}
+	// }
+	
+	// &.is-off {
+	// 	.switch-inner-box {
+	// 		margin-left: @switchHandleWidth - @switchInnerWidth;
+	// 	}
+	// 	.switch-handle {
+	// 		left: 0;
+	// 	}
+	// }
+}
+
+//================================================
+
+//mixins
+//================================================
+@import "./mixins.less";
+
+
+//switch-skins
+//================================================
+
+// @import "./switch-skin1.less";
+// @import "./switch-skin2.less";
+@import "./switch-skin3.less";
+@import "./switch-skin4.less";
+// @import "./switch-skin5.less";
+@import "./switch-skin6.less";
+// @import "./switch-skin7.less";
+@import "./switch-skin8.less";
+@import "./switch-skin9.less";
+// @import "./switch-skin10.less";
+
+//================================================

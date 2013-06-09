@@ -88,7 +88,7 @@ module.exports = function(grunt) {
         recess: {
             core: {
                 src: ["less/**/*.less"],
-                dest: 'demo/css/switch.css',
+                dest: 'demo/css/switcher.css',
                 options: {
                     compile: true
                 }
