@@ -1,22 +1,22 @@
 {
-  "name": "iToggle",
+  "name": "jquery-switcher",
   "title": "Itoggle",
   "description": "a iphone like jquery checkbox plugin",
   "version": "0.1.0",
-  "homepage": "https://github.com/amazingSurge/iToggle",
+  "homepage": "https://github.com/amazingSurge/jquery-switcher",
   "author": {
     "name": "joeylin",
     "email": "331547274@qq.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/amazingSurge/iToggle.git"
+    "url": "git://github.com/amazingSurge/jquery-switcher.git"
   },
-  "bugs": "https://github.com/amazingSurge/iToggle/issues",
+  "bugs": "https://github.com/amazingSurge/jquery-switcher/issues",
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/amazingSurge/iToggle/blob/master/LICENSE-MIT"
+      "url": "https://github.com/amazingSurge/jquery-switcher/blob/master/LICENSE-MIT"
     }
   ],
   "devDependencies": {
