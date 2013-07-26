@@ -93,8 +93,24 @@ module.exports = function(grunt) {
                     compile: true
                 }
             },
-
-
+        },
+        replace: {
+            bower: {
+                src: ['bower.json'],
+                overwrite: true, // overwrite matched source files
+                replacements: [{
+                    from: /("version": ")([0-9\.]+)(")/g,
+                    to: "$1<%= pkg.version %>$3"
+                }]
+            },
+            jquery: {
+                src: ['tabs.jquery.json'],
+                overwrite: true, // overwrite matched source files
+                replacements: [{
+                    from: /("version": ")([0-9\.]+)(")/g,
+                    to: "$1<%= pkg.version %>$3"
+                }]
+            },
         }
     });
 
@@ -107,6 +123,7 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-jsbeautifier');
     grunt.loadNpmTasks('grunt-recess');
+    grunt.loadNpmTasks('grunt-text-replace');
 
     // Default task.
     grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'concat', 'uglify']);
@@ -115,5 +132,10 @@ module.exports = function(grunt) {
 
     grunt.registerTask('js', ['jsbeautifier', 'jshint']);
     grunt.registerTask('css', ['recess']);
+
+    grunt.registerTask('version', [
+        'replace:bower',
+        'replace:jquery'
+    ]);
 
 };
