@@ -26,9 +26,9 @@ And CSS:
 
 Create base html element:
 ```html
-	<div class="example">
-		<input class="sw-3" type="checkbox" checked="checked" />
-	</div>
+    <div class="example">
+        <input class="sw-3" type="checkbox" checked="checked" />
+    </div>
 ```
 
 Initialize tabs:
@@ -39,7 +39,7 @@ $(".sw-3").switcher({skin: 'skin-3'});
 Or initialize tabs with custom settings:
 ```javascript
 $(".sw-3").switcher({
-		skin: 'skin-8',
+        skin: 'skin-8',
         dragable: true,
         clickable: true,
         disabled: false,
@@ -67,45 +67,45 @@ the most important thing is you should set skin value to let plugin find his shi
         </tr>
     </thead>
     <tbody>
-		<tr>
+        <tr>
             <td>skin</td>
             <td>null</td>
             <td>compulsory property, set transition effect, it works after you load specified skin file</td>
         </tr>
-		<tr>
+        <tr>
             <td>dragable</td>
             <td>true</td>
-            <td>compulsory property, set the switcher of the drag effect, if false, the drag effect will be stop</td>
+            <td>Optional property, set the switcher of the drag effect, if false, the drag effect will be stop</td>
         </tr>
-		<tr>
+        <tr>
             <td>clickable</td>
             <td>true</td>
-            <td>compulsory property, add the click effect</td>
+            <td>Optional property, add the click effect</td>
         </tr>
-		<tr>
+        <tr>
             <td>disabled</td>
             <td>false</td>
-            <td>compulsory property, set the button disabled or enabled</td>
+            <td>Optional property, set the button disabled or enabled</td>
         </tr>
-		<tr>
+        <tr>
             <td>ontext</td>
             <td>'ON'</td>
-            <td>compulsory property, display the state of the switch</td>
+            <td>Optional property, display the state of the switch</td>
         </tr>
-		<tr>
+        <tr>
             <td>offtext</td>
             <td>'OFF'</td>
-            <td>compulsory property, display the state of the switch</td>
+            <td>Optional property, display the state of the switch</td>
         </tr>
-		<tr>
+        <tr>
             <td>checked</td>
             <td>true</td>
-            <td>compulsory property, set the state of swith, if true, the switch opend</td>
+            <td>Optional property, set the state of swith, if true, the switch opend</td>
         </tr>
-		<tr>
+        <tr>
             <td>animation</td>
             <td>200</td>
-            <td>compulsory property, set the switch to change state of sliding time</td>
+            <td>Optional property, set the switch to change state of sliding time</td>
         </tr>
         <tr>
             <td>namespace</td>
@@ -152,7 +152,6 @@ Mobile browsers (like Opera mini, Chrome mobile, Safari mobile, Android browser 
 
 | Version | Notes                                                            |
 |---------|------------------------------------------------------------------|
-
 |     ... | ...                                                              |
 
 ## Author
