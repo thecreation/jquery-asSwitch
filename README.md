@@ -39,15 +39,15 @@ $(".sw-3").switcher({skin: 'skin-3'});
 Or initialize tabs with custom settings:
 ```javascript
 $(".sw-3").switcher({
-        skin: 'skin-8',
-        dragable: true,
-        clickable: true,
-        disabled: false,
-        ontext: 'ON',
-        offtext: 'OFF',
-        checked: true,
-        animation: 200,
-        namespace: 'switch'
+    skin: 'skin-8',
+    dragable: true,
+    clickable: true,
+    disabled: false,
+    ontext: 'ON',
+    offtext: 'OFF',
+    checked: true,
+    animation: 200,
+    namespace: 'switch'
 });
 ```
 
