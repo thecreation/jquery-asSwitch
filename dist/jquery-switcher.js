@@ -86,6 +86,10 @@
                 this.$handle.css({
                     left: this.distance + pos
                 });
+
+                if ($.type(callback) === 'function') {
+                    callback();
+                }
                 return false;
             }
 
