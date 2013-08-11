@@ -18,12 +18,14 @@
         this.namespace = this.options.namespace;
 
         this.classes = {
-            skin: this.namespace + '_' + this.options.skin
+            skin: this.namespace + '_' + this.options.skin,
+            on: this.namespace + '_on',
+            off: this.namespace + '_off' 
         };
 
         this.$element.addClass(this.namespace);
 
-        if (this.options.skin !== null) {
+        if (!this.options.skin !== null) {
             this.$element.addClass(this.classes.skin);
         }
 
@@ -216,6 +218,7 @@
          */  
         
         set: function(value) {
+            var self = this;
             if (this.enabled === false) {
                 return;
             }
@@ -224,15 +227,17 @@
                     this.checked = value;
                     this.$input.trigger('checked');
                     this.$input.prop('checked', true);
-                    // this.move(0);
-                    this.animate(0);
+                    this.animate(0, function() {
+                        self.$element.removeClass(self.classes.off).addClass(self.classes.on);
+                    });
                     break;
                 case false:
                     this.checked = value;
                     this.$input.trigger('unchecked');
                     this.$input.prop('checked', false);
-                    // this.move(-this.distance);
-                    this.animate(-this.distance);
+                    this.animate(-this.distance, function() {
+                        self.$element.removeClass(self.classes.on).addClass(self.classes.off);
+                    });
                     break;
             }
             return this;
@@ -257,7 +262,7 @@
     };
     Switcher.defaults = {
         namespace: 'switcher',
-        skin: 'null',
+        skin: null,
 
         dragable: true,
         clickable: true,
