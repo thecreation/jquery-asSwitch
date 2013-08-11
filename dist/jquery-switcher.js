@@ -1,6 +1,6 @@
-/*! Itoggle - v0.1.0 - 2013-07-23
+/*! jquery switcher - v0.1.0 - 2013-08-11
 * https://github.com/amazingSurge/jquery-switcher
-* Copyright (c) 2013 joeylin; Licensed MIT */
+* Copyright (c) 2013 amazingSurge; Licensed GPL */
 (function($) {
     "use strict";
 
@@ -17,7 +17,16 @@
         this.options = $.extend({}, Switcher.defaults, options, meta);
         this.namespace = this.options.namespace;
 
-        this.$element.addClass(this.namespace).addClass(this.options.skin);
+        this.classes = {
+            skin: this.namespace + '_' + this.options.skin
+        };
+
+        this.$element.addClass(this.namespace);
+
+        if (this.options.skin !== null) {
+            this.$element.addClass(this.classes.skin);
+        }
+
         this.checked = this.options.checked;
         this.enabled = true;
         this.initial = false;
@@ -105,7 +114,7 @@
                 left: this.distance + pos
             });
         },
-        click: function(e) {
+        click: function() {
 
             if (this._click === false) {
                 this._click = true;
@@ -247,7 +256,8 @@
         }
     };
     Switcher.defaults = {
-        skin: 'skin-8',
+        namespace: 'switcher',
+        skin: 'null',
 
         dragable: true,
         clickable: true,
@@ -257,15 +267,34 @@
         offtext: 'OFF',
 
         checked: true,
-        animation: 200,
-        namespace: 'switch'
+        animation: 200
+        
     };
 
     $.fn.switcher = function(options) {
-        return this.each(function() {
-            if (!$.data(this, 'switcher')) {
-                $.data(this, 'switcher', new Switcher(this, options));
+        if (typeof options === 'string') {
+            var method = options;
+            var method_arguments = arguments.length > 1 ? Array.prototype.slice.call(arguments, 1) : undefined;
+
+            if (/^(getTabs|getPanes|getCurrentPane|getCurrentTab|getIndex)$/.test(method)) {
+                var api = this.first().data('switcher');
+                if (api && typeof api[method] === 'function') {
+                    return api[method].apply(api, method_arguments);
+                }
+            } else {
+                return this.each(function() {
+                    var api = $.data(this, 'switcher');
+                    if (api && typeof api[method] === 'function') {
+                        api[method].apply(api, method_arguments);
+                    }
+                });
             }
-        });
+        } else {
+            return this.each(function() {
+                if (!$.data(this, 'switcher')) {
+                    $.data(this, 'switcher', new Switcher(this, options));
+                }
+            });
+        }
     };
 }(jQuery));

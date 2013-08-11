@@ -17,7 +17,7 @@
 //=======================
 
 
-.switch.skin-9 {
+.switcher.switcher_skin-9 {
 	height: @switchSkin9-Height;
 	width: @switchSkin9-Width;
 	.border-radius(3px);
@@ -37,16 +37,16 @@
 		.border-radius(3px);
 	}
 
-	.switch-inner {
+	.switcher-inner {
 		.border-radius(3px);
 	}
 
-	.switch-inner-box {
+	.switcher-inner-box {
 		height: @switchSkin9-Height;
 		width: @switchSkin9-BoxWidth;
 	}
 
-	.switch-on {
+	.switcher-on {
 		height: @switchSkin9-Height;
 		width: @switchSkin9-OnWidth;
 		line-height: @switchSkin9-Height;
@@ -62,7 +62,7 @@
 		background-position: 25% 50%;
 		background-repeat: no-repeat;
 	}
-	.switch-off {
+	.switcher-off {
 		height: @switchSkin9-Height;
 		width: @switchSkin9-OffWidth;
 		line-height: @switchSkin9-Height;
@@ -78,7 +78,7 @@
 		background-position: 75% 50%;
 		background-repeat: no-repeat;
 	}
-	.switch-handle {
+	.switcher-handle {
 		z-index: 999;
 		width: @switchSkin9-HandleWidth;
 		height: @switchSkin9-Height;
@@ -123,15 +123,15 @@
 	&.is-on {
 		background-color: @switchSkin9-OnBgColor;
 		border: 4px solid @switchSkin9-OnBgColor;
-		.switch-inner-box {
+		.switcher-inner-box {
 			margin-left: 0;
 		}
 	
-		.switch-off {
+		.switcher-off {
 			background-color: @switchSkin9-OnBgColor;
 		}
 
-		.switch-handle {
+		.switcher-handle {
 			left: @switchSkin9-Width - @switchSkin9-HandleWidth;
 		}
 	}
@@ -140,15 +140,15 @@
 		background-color: @switchSkin9-OffBgColor;
 		border: 4px solid @switchSkin9-OffBgColor;
 
-		.switch-inner-box {
+		.switcher-inner-box {
 			margin-left: @switchSkin9-HandleWidth - @switchSkin9-Width;
 		}
 
-		.switch-on {
+		.switcher-on {
 			background-color: @switchSkin9-OffBgColor;
 		}
 
-		.switch-handle {
+		.switcher-handle {
 			left: 0;
 		}
 	}
