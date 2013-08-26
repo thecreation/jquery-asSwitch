@@ -58,62 +58,36 @@ the most important thing is you should set skin value to let plugin find his shi
 
 ## Settings
 
-<table>
-    <thead>
-        <tr>
-            <th>Property</th>
-            <th>Default</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>skin</td>
-            <td>null</td>
-            <td>compulsory property, set transition effect, it works after you load specified skin file</td>
-        </tr>
-        <tr>
-            <td>dragable</td>
-            <td>true</td>
-            <td>Optional property, set the switcher of the drag effect, if false, the drag effect will be stop</td>
-        </tr>
-        <tr>
-            <td>clickable</td>
-            <td>true</td>
-            <td>Optional property, add the click effect</td>
-        </tr>
-        <tr>
-            <td>disabled</td>
-            <td>false</td>
-            <td>Optional property, set the button disabled or enabled</td>
-        </tr>
-        <tr>
-            <td>ontext</td>
-            <td>'ON'</td>
-            <td>Optional property, display the state of the switch</td>
-        </tr>
-        <tr>
-            <td>offtext</td>
-            <td>'OFF'</td>
-            <td>Optional property, display the state of the switch</td>
-        </tr>
-        <tr>
-            <td>checked</td>
-            <td>true</td>
-            <td>Optional property, set the state of swith, if true, the switch opend</td>
-        </tr>
-        <tr>
-            <td>animation</td>
-            <td>200</td>
-            <td>Optional property, set the switch to change state of sliding time</td>
-        </tr>
-        <tr>
-            <td>namespace</td>
-            <td>'switch'</td>
-            <td>Optional property, set a namspace for css class, for example, we have <code>.switch_active</code> class for active effect, if namespace set to 'as-switch', then it will be <code>.as-switch_active</code></td>
-        </tr>
-    </tbody>
-</table>
+```javascript
+{   
+
+    // Compulsory property,it works after you load  the specified skin file
+    skin: 'skin-8',
+    
+    //Optional property, if false the function of dragable will be stop
+    dragable: 'true',
+
+    //Optional property, if false the function of click will be stop
+    clickable: true,
+
+    //Optional property, if true the switcher can't be used
+    disabled: false,
+
+    //Optional property, the text display when switcher is opened
+    ontext: 'ON',
+
+    //Optional property, the text display when switcher is closed
+    offtext: 'OFF',
+
+    //Optional property, if true, the switcher will be open when initialize
+    checked: true,
+
+    //Optional property, set the duration time when the switcher from one state to anther
+    animation: 200,
+
+    //Optional property, set a namespace for css class
+    namespace: 'switch'
+```
 
 ## Public methods
 
@@ -140,7 +114,14 @@ $(".sw-3").switcher("destroy");
 ## Event / Callback
 
 * <code>checked</code>: trigger when the switch is opened
-* <code>unchecked</code>: trigger when the switch is unopened
+* <code>unchecked</code>: trigger when the switch is close
+
+how to use event:
+```javascript
+$(document).on('checked', function(event,instance) {
+    // instance means current switcher instance 
+    // some stuff
+});
 ```
 
 ## Browser support
