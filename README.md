@@ -65,7 +65,7 @@ the most important thing is you should set skin value to let plugin find his shi
     skin: 'skin-8',
     
     //Optional property, if false the function of dragable will be stop
-    dragable: 'true',
+    dragable: true,
 
     //Optional property, if false the function of click will be stop
     clickable: true,
