@@ -35,7 +35,7 @@
         }
 
         this.checked = this.options.checked;
-        this.enabled = true;
+        this.disabled = this.options.disabled;
         this.initial = false;
 
         // flag
@@ -51,8 +51,8 @@
 
             this.$inner = $('<div class="' + this.namespace + '-inner"></div>');
             this.$innerBox = $('<div class="' + this.namespace + '-inner-box"></div>');
-            this.$on = $('<div class="' + this.namespace + '-on">' + opts.ontext + '</div>');
-            this.$off = $('<div class="' + this.namespace + '-off">' + opts.offtext + '</div>');
+            this.$on = $('<div class="' + this.namespace + '-on">' + opts.onText + '</div>');
+            this.$off = $('<div class="' + this.namespace + '-off">' + opts.offText + '</div>');
             this.$handle = $('<div class="' + this.namespace + '-handle"></div>');
 
             this.$innerBox.append(this.$on, this.$off);
@@ -66,22 +66,23 @@
             this.distance = w - h / 2;
 
             if (this.options.clickable === true) {
-                this.$element.on('click touchstart', $.proxy(this.click, this));
+                this.$element.on('click.switcher touchstart.switcher', $.proxy(this.click, this));
                 
             }
 
             if (this.options.dragable === true) {
-                this.$handle.on('mousedown touchstart', $.proxy(this.mousedown, this));
-                this.$handle.on('click', function() {
+                this.$handle.on('mousedown.switcher touchstart.switcher', $.proxy(this.mousedown, this));
+                this.$handle.on('click.switcher', function() {
                     return false;
                 });
             }
 
             this.set(this.checked);
             this.initial = true;
+
+            this.$input.trigger('switcher::ready', this);
         },
         animate: function(pos, callback) {
-
             // prevent animate when first load
             if (this.initial === false) {
                 this.$innerBox.css({
@@ -145,7 +146,7 @@
                 self = this,
                 startX = this.getDragPos(e);
 
-            if (this.enabled === false) {
+            if (this.disabled === true) {
                 return;
             }
 
@@ -221,20 +222,15 @@
             this.set(false);
             return this;
         },
-
-        /*
-            Public Method
-         */  
-        
         set: function(value) {
             var self = this;
-            if (this.enabled === false) {
+            if (this.disabled === true) {
                 return;
             }
             switch (value) {
                 case true:
                     this.checked = value;
-                    this.$input.trigger('checked');
+                    this.$input.trigger('switcher::checked', this);
                     this.$input.prop('checked', true);
                     this.animate(0, function() {
                         self.$element.removeClass(self.classes.off).addClass(self.classes.on);
@@ -242,7 +238,7 @@
                     break;
                 case false:
                     this.checked = value;
-                    this.$input.trigger('unchecked');
+                    this.$input.trigger('switcher::unchecked', this);
                     this.$input.prop('checked', false);
                     this.animate(-this.distance, function() {
                         self.$element.removeClass(self.classes.on).addClass(self.classes.off);
@@ -254,19 +250,33 @@
         get: function() {
             return this.$input.prop('checked');
         },
+
+        /*
+            Public Method
+         */  
+        
+        val: function(value) {
+            if (value) {
+                this.set(value);
+            } else {
+                return this.get();
+            }
+        },
         enable: function() {
-            this.enabled = true;
-            this.$element.addClass(this.namespace + '-enabled');
+            this.disabled = false;
+            this.$input.prop('disabled', false);
+            this.$element.removeClass(this.namespace + '-disabled');
             return this;
         },
         disable: function() {
-            this.enabled = false;
-            this.$element.removeClass(this.namespace + '-enabled');
+            this.disabled = true;
+            this.$input.prop('disabled', true);
+            this.$element.addClass(this.namespace + '-disabled');
             return this;
         },
         destroy: function() {
-            this.$element.off('click touchstart');
-            this.$handle.off('mousedown touchstart');
+            this.$element.off('.switcher');
+            this.$handle.off('.switcher');
         }
     };
     Switcher.defaults = {
@@ -277,8 +287,8 @@
         clickable: true,
         disabled: false,
 
-        ontext: 'ON',
-        offtext: 'OFF',
+        onText: 'ON',
+        offText: 'OFF',
 
         checked: true,
         animation: 200
