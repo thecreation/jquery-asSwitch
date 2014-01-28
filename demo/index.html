@@ -175,23 +175,19 @@
                 <div class="consoleEvent" style="height:200px; overflow:hidden; border:1px solid #888;"></div>
                 <script>                   
                     $(document).ready(function() {
+                        $('.sw-event').on('switcher::ready', function(event,instance) {
+                            var text = event.type + ': triggered';
+                            $('<div>' + text + '</div>').prependTo('.consoleEvent');
+                        });
                         $('.sw-event').switcher({
                             dragable: true,
                             clickable: true,
                             skin: 'skin-6'
                         });   
-                        $('.sw-event').on('switcher::ready', function(event,instance) {
-                            var text = event.type + ': triggered';
+                        $('.sw-event').on('switcher::change', function(event,instance) {
+                            var text = event.type + ': triggered, the value is ' + instance.checked;
                             $('<div>' + text + '</div>').prependTo('.consoleEvent');
-                        });
-                        $('.sw-event').on('switcher::checked', function(event,instance) {
-                            var text = event.type + ': triggered';
-                            $('<div>' + text + '</div>').prependTo('.consoleEvent');
-                        });
-                        $('.sw-event').on('switcher::unchecked', function(event,instance) {
-                            var text = event.type + ': triggered';
-                            $('<div>' + text + '</div>').prependTo('.consoleEvent');
-                        });              
+                        });         
                     });
                 </script>
             </div>
