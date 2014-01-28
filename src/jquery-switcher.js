@@ -178,22 +178,14 @@
 
             this.mouseup = function() {
                 var currPos = parseInt(this.$innerBox.css('margin-left'), 10);
-
                 if (Math.abs(currPos) >= this.distance / 2) {
                     this.set(false);
                 }
-
                 if (Math.abs(currPos) < this.distance / 2) {
                     this.set(true);
                 }
 
-                $(document).off({
-                    mousemove: this.mousemove,
-                    mouseup: this.mouseup,
-                    touchmove: this.mousemove,
-                    touchend: this.mouseup
-                });
-
+                $(document).off('.switcher');
                 this.$handle.off('mouseup');
                 return false;
             };
