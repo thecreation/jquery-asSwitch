@@ -1,17 +1,16 @@
-/*! jquery switcher - v0.1.0 - 2013-08-28
+/*! jquery switcher - v0.1.0 - 2014-01-28
 * https://github.com/amazingSurge/jquery-switcher
-* Copyright (c) 2013 amazingSurge; Licensed GPL */
+* Copyright (c) 2014 amazingSurge; Licensed GPL */
 (function($) {
     "use strict";
 
-    var Switcher = $.switcher = function(input, options) {
-
-        this.$input = $(input).wrap('<div></div>');
-        this.$element = this.$input.parent();
+    var Switcher = $.switcher = function(element, options) {
+        this.$element = $(element).wrap('<div></div>');
+        this.$parent = this.$element.parent();
 
         var meta = {
-            disabled: this.$input.prop('disabled'),
-            checked: this.$input.prop('checked')
+            disabled: this.$element.prop('disabled'),
+            checked: this.$element.prop('checked')
         };
 
         this.options = $.extend({}, Switcher.defaults, options, meta);
@@ -20,22 +19,23 @@
         this.classes = {
             skin: this.namespace + '_' + this.options.skin,
             on: this.namespace + '_on',
-            off: this.namespace + '_off' 
+            off: this.namespace + '_off',
+            disabled: this.namespace + '_disabled'
         };
 
-        this.$element.addClass(this.namespace);
+        this.$parent.addClass(this.namespace);
 
-        if (!this.options.skin !== null) {
-            this.$element.addClass(this.classes.skin);
+        if (this.options.skin) {
+            this.$parent.addClass(this.classes.skin);
         }
 
         this.checked = this.options.checked;
         this.disabled = this.options.disabled;
-        this.initial = false;
+        this.initialized = false;
 
         // flag
         this._click = true;
-
+        this._trigger('init');
         this.init();
     };
 
@@ -52,7 +52,7 @@
 
             this.$innerBox.append(this.$on, this.$off);
             this.$inner.append(this.$innerBox);
-            this.$element.append(this.$inner, this.$handle);
+            this.$parent.append(this.$inner, this.$handle);
 
             // get components width
             var w = this.$on.width();
@@ -61,8 +61,8 @@
             this.distance = w - h / 2;
 
             if (this.options.clickable === true) {
-                this.$element.on('click.switcher touchstart.switcher', $.proxy(this.click, this));
-                
+                this.$parent.on('click.switcher touchstart.switcher', $.proxy(this.click, this));
+
             }
 
             if (this.options.dragable === true) {
@@ -73,13 +73,27 @@
             }
 
             this.set(this.checked);
-            this.initial = true;
+            this.initialized = true;
 
-            this.$input.trigger('switcher::ready', this);
+            this._trigger('ready');
+        },
+        _trigger: function(eventType) {
+            // event
+            this.$element.trigger('switcher::' + eventType, this);
+
+            // callback
+            eventType = eventType.replace(/\b\w+\b/g, function(word) {
+                return word.substring(0, 1).toUpperCase() + word.substring(1);
+            });
+            var onFunction = 'on' + eventType;
+            var method_arguments = arguments.length > 1 ? Array.prototype.slice.call(arguments, 1) : undefined;
+            if (typeof this.options[onFunction] === 'function') {
+                this.options[onFunction].apply(this, method_arguments);
+            }
         },
         animate: function(pos, callback) {
             // prevent animate when first load
-            if (this.initial === false) {
+            if (this.initialized === false) {
                 this.$innerBox.css({
                     marginLeft: pos
                 });
@@ -88,7 +102,7 @@
                     left: this.distance + pos
                 });
 
-                if ($.type(callback) === 'function') {
+                if (typeof callback === 'function') {
                     callback();
                 }
                 return false;
@@ -122,13 +136,12 @@
             });
         },
         click: function() {
-
-            if (this._click === false) {
+            if (!this._click) {
                 this._click = true;
                 return false;
             }
 
-            if (this.checked === true) {
+            if (this.checked) {
                 this.set(false);
             } else {
                 this.set(true);
@@ -141,14 +154,13 @@
                 self = this,
                 startX = this.getDragPos(e);
 
-            if (this.disabled === true) {
+            if (this.disabled) {
                 return;
             }
 
             this.mousemove = function(e) {
                 var current = this.getDragPos(e);
-
-                if (this.checked === true) {
+                if (this.checked) {
                     dragDistance = current - startX > 0 ? 0 : (current - startX < -this.distance ? -this.distance : current - startX);
                 } else {
                     dragDistance = current - startX < 0 ? -this.distance : (current - startX > this.distance ? 0 : -this.distance + current - startX);
@@ -182,28 +194,20 @@
             };
 
             $(document).on({
-                mousemove: $.proxy(this.mousemove, this),
-                mouseup: $.proxy(this.mouseup, this),
-                touchmove: $.proxy(this.mousemove, this),
-                touchend: $.proxy(this.mouseup, this)
+                'mousemove.switcher': $.proxy(this.mousemove, this),
+                'mouseup.switcher': $.proxy(this.mouseup, this),
+                'touchmove.switcher': $.proxy(this.mousemove, this),
+                'touchend.switcher': $.proxy(this.mouseup, this)
             });
 
-            if (this.options.clickable === true) {
-                this.$handle.on('mouseup touchend', function() {
-                    if (self.checked === true) {
+            if (this.options.clickable) {
+                this.$handle.one('mouseup.switcher touchend.switcher', function() {
+                    if (self.checked) {
                         self.set(false);
                     } else {
                         self.set(true);
                     }
-
-                    self.$handle.off('mouseup touchend');
-
-                    $(document).off({
-                        mousemove: this.mousemove,
-                        mouseup: this.mouseup,
-                        touchmove: this.mousemove,
-                        touchend: this.mouseup
-                    });
+                    $(document).off('.switcher');
                 });
             }
 
@@ -219,37 +223,36 @@
         },
         set: function(value) {
             var self = this;
-            if (this.disabled === true) {
+            if (this.disabled) {
                 return;
             }
             switch (value) {
                 case true:
                     this.checked = value;
-                    this.$input.trigger('switcher::checked', this);
-                    this.$input.prop('checked', true);
+                    this.$element.prop('checked', true);
                     this.animate(0, function() {
-                        self.$element.removeClass(self.classes.off).addClass(self.classes.on);
+                        self.$parent.removeClass(self.classes.off).addClass(self.classes.on);
                     });
                     break;
                 case false:
                     this.checked = value;
-                    this.$input.trigger('switcher::unchecked', this);
-                    this.$input.prop('checked', false);
+                    this.$element.prop('checked', false);
                     this.animate(-this.distance, function() {
-                        self.$element.removeClass(self.classes.on).addClass(self.classes.off);
+                        self.$parent.removeClass(self.classes.on).addClass(self.classes.off);
                     });
                     break;
             }
+            this._trigger('change', this.checked);
             return this;
         },
         get: function() {
-            return this.$input.prop('checked');
+            return this.$element.prop('checked');
         },
 
         /*
             Public Method
-         */  
-        
+         */
+
         val: function(value) {
             if (value) {
                 this.set(value);
@@ -259,18 +262,18 @@
         },
         enable: function() {
             this.disabled = false;
-            this.$input.prop('disabled', false);
-            this.$element.removeClass(this.namespace + '-disabled');
+            this.$element.prop('disabled', false);
+            this.$parent.removeClass(this.classes.disabled);
             return this;
         },
         disable: function() {
             this.disabled = true;
-            this.$input.prop('disabled', true);
-            this.$element.addClass(this.namespace + '-disabled');
+            this.$element.prop('disabled', true);
+            this.$parent.addClass(this.disbaled);
             return this;
         },
         destroy: function() {
-            this.$element.off('.switcher');
+            this.$parent.off('.switcher');
             this.$handle.off('.switcher');
         }
     };
@@ -287,7 +290,7 @@
 
         checked: true,
         animation: 200
-        
+
     };
 
     $.fn.switcher = function(options) {
@@ -295,7 +298,7 @@
             var method = options;
             var method_arguments = arguments.length > 1 ? Array.prototype.slice.call(arguments, 1) : undefined;
 
-            if (/^(getTabs|getPanes|getCurrentPane|getCurrentTab|getIndex)$/.test(method)) {
+            if (/^(get)$/.test(method)) {
                 var api = this.first().data('switcher');
                 if (api && typeof api[method] === 'function') {
                     return api[method].apply(api, method_arguments);

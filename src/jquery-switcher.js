@@ -9,9 +9,8 @@
 (function($) {
     "use strict";
 
-    var Switcher = $.switcher = function(input, options) {
-
-        this.$element = $(input).wrap('<div></div>');
+    var Switcher = $.switcher = function(element, options) {
+        this.$element = $(element).wrap('<div></div>');
         this.$parent = this.$element.parent();
 
         var meta = {
