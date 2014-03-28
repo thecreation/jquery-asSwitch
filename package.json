@@ -1,35 +1,33 @@
 {
-  "name": "jquery-switcher",
-  "title": "jquery switcher",
-  "description": "a iphone like jquery checkbox plugin",
-  "version": "0.1.0",
-  "homepage": "https://github.com/amazingSurge/jquery-switcher",
-  "author": {
-    "name": "amazingSurge",
-    "email": "amazingSurge@gmail.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/amazingSurge/jquery-switcher.git"
-  },
-  "bugs": "https://github.com/amazingSurge/jquery-switcher/issues",
-  "licenses": [
-    {
-      "type": "GPL",
-      "url": "https://github.com/amazingSurge/jquery-switcher/blob/master/LICENSE-GPL"
+    "name": "jquery-asSwitcher",
+    "title": "jquery asSwitcher",
+    "description": "a iphone like jquery checkbox plugin",
+    "version": "0.1.0",
+    "homepage": "https://github.com/amazingSurge/jquery-asSwitcher",
+    "author": {
+        "name": "amazingSurge",
+        "email": "amazingSurge@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/amazingSurge/jquery-asSwitcher.git"
+    },
+    "bugs": "https://github.com/amazingSurge/jquery-asSwitcher/issues",
+    "licenses": [{
+        "type": "GPL",
+        "url": "https://github.com/amazingSurge/jquery-asSwitcher/blob/master/LICENSE-GPL"
+    }],
+    "devDependencies": {
+        "grunt-contrib-jshint": "~0.1.1",
+        "grunt-contrib-concat": "~0.1.2",
+        "grunt-contrib-uglify": "~0.1.1",
+        "grunt-contrib-watch": "~0.2.0",
+        "grunt-contrib-clean": "~0.4.0",
+        "grunt": "~0.4.1",
+        "grunt-jsbeautifier": "~0.1.6",
+        "grunt-recess": "~0.3.1"
+    },
+    "dependencies": {
+        "grunt-text-replace": "~0.3.6"
     }
-  ],
-  "devDependencies": {
-    "grunt-contrib-jshint": "~0.1.1",
-    "grunt-contrib-concat": "~0.1.2",
-    "grunt-contrib-uglify": "~0.1.1",
-    "grunt-contrib-watch": "~0.2.0",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt": "~0.4.1",
-    "grunt-jsbeautifier": "~0.1.6",
-    "grunt-recess": "~0.3.1"
-  },
-  "dependencies": {
-    "grunt-text-replace": "~0.3.6"
-  }
 }

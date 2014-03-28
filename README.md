@@ -1,14 +1,14 @@
-# jQuery switcher
+# jQuery asSwitcher
 
-The powerful jQuery plugin that creates a switcher. <a href="http://amazingsurge.github.io/jquery-switcher/">Project page and demos</a><br />
-Download: <a href="https://github.com/amazingSurge/jquery-switcher/archive/master.zip">jquery-switcher-master.zip</a>
+The powerful jQuery plugin that creates a asSwitcher. <a href="http://amazingsurge.github.io/jquery-asSwitcher/">Project page and demos</a><br />
+Download: <a href="https://github.com/amazingSurge/jquery-asSwitcher/archive/master.zip">jquery-asSwitcher-master.zip</a>
 
 ***
 
 ## Features
 
-* **Different styles support** — The plugin provides different styles of switcher
-* **Different devices support** — switcher can be used on the PC and touch device
+* **Different styles support** — The plugin provides different styles of asSwitcher
+* **Different devices support** — asSwitcher can be used on the PC and touch device
 * **Lightweight size** — 1 kb gzipped
 
 ## Dependencies
@@ -18,10 +18,10 @@ Download: <a href="https://github.com/amazingSurge/jquery-switcher/archive/maste
 
 Import this libraries:
 * jQuery
-* jquery-switcher.js
+* jquery-asSwitcher.js
 
 And CSS:
-* switcher.css - desirable if you have not yet connected one
+* asSwitcher.css - desirable if you have not yet connected one
 
 
 Create base html element:
@@ -33,12 +33,12 @@ Create base html element:
 
 Initialize tabs:
 ```javascript
-$(".sw-3").switcher({skin: 'skin-3'});
+$(".sw-3").asSwitcher({skin: 'skin-3'});
 ```
 
 Or initialize tabs with custom settings:
 ```javascript
-$(".sw-3").switcher({
+$(".sw-3").asSwitcher({
     skin: 'skin-8',
     dragable: true,
     clickable: true,
@@ -70,19 +70,19 @@ the most important thing is you should set skin value to let plugin find his shi
     //Optional property, if false the function of click will be stop
     clickable: true,
 
-    //Optional property, if true the switcher can't be used
+    //Optional property, if true the asSwitcher can't be used
     disabled: false,
 
-    //Optional property, the text display when switcher is opened
+    //Optional property, the text display when asSwitcher is opened
     ontext: 'ON',
 
-    //Optional property, the text display when switcher is closed
+    //Optional property, the text display when asSwitcher is closed
     offtext: 'OFF',
 
-    //Optional property, if true, the switcher will be open when initialize
+    //Optional property, if true, the asSwitcher will be open when initialize
     checked: true,
 
-    //Optional property, set the duration time when the switcher from one state to anther
+    //Optional property, set the duration time when the asSwitcher from one state to anther
     animation: 200,
 
     //Optional property, set a namespace for css class
@@ -91,23 +91,23 @@ the most important thing is you should set skin value to let plugin find his shi
 
 ## Public methods
 
-jquery switcher has different methods , we can use it as below :
+jquery asSwitcher has different methods , we can use it as below :
 ```javascript
 
 // set the state of switch
-$(".sw-3").switcher("set");
+$(".sw-3").asSwitcher("set");
 
 // get the current state of switch
-$(".sw-3").switcher("get");
+$(".sw-3").asSwitcher("get");
 
-// add a enable class to switcher elment
-$(".sw-3").switcher("enable");
+// add a enable class to asSwitcher elment
+$(".sw-3").asSwitcher("enable");
 
 // remove the enable class
-$(".sw-3").switcher("disable");
+$(".sw-3").asSwitcher("disable");
 
-// remove switcher Dom emement and unbound all events 
-$(".sw-3").switcher("destroy");
+// remove asSwitcher Dom emement and unbound all events 
+$(".sw-3").asSwitcher("destroy");
 
 ```
 
@@ -119,7 +119,7 @@ $(".sw-3").switcher("destroy");
 how to use event:
 ```javascript
 $(document).on('checked', function(event,instance) {
-    // instance means current switcher instance 
+    // instance means current asSwitcher instance 
     // some stuff
 });
 ```
@@ -139,6 +139,6 @@ Mobile browsers (like Opera mini, Chrome mobile, Safari mobile, Android browser 
 [amazingSurge](http://amazingSurge.com)
 
 ## License
-jQuery-switcher plugin is released under the <a href="https://github.com/amazingSurge/jquery-switcher/blob/master/LICENCE.GPL" target="_blank">GPL licence</a>.
+jQuery-asSwitcher plugin is released under the <a href="https://github.com/amazingSurge/jquery-asSwitcher/blob/master/LICENCE.GPL" target="_blank">GPL licence</a>.
 
 

@@ -17,18 +17,18 @@
 //=======================
 
 
-.switcher.switcher_skin-8 {
+.asSwitcher.asSwitcher_skin-8 {
 	height: @switchSkin8-Height;
 	width: @switchSkin8-Width;
 	background-color: @switchSkin8-BgColor;
 	border: 2px solid @switchSkin8-BgColor;	
 
-	.switcher-inner-box {
+	.asSwitcher-inner-box {
 		height: @switchSkin8-Height;
 		width: @switchSkin8-BoxWidth;
 	}
 
-	.switcher-on {
+	.asSwitcher-on {
 		height: @switchSkin8-Height;
 		width: @switchSkin8-OnWidth;
 		text-indent: 13px;
@@ -38,7 +38,7 @@
 		color: @switchSkin8-TextColor;
 		background-color: @switchSkin8-BgColor;
 	}
-	.switcher-off {
+	.asSwitcher-off {
 		height: @switchSkin8-Height;
 		width: @switchSkin8-OffWidth;
 		text-indent: 24px;
@@ -48,17 +48,17 @@
 		color: @switchSkin8-TextColor;
 		background-color: @switchSkin8-BgColor;
 	}
-	.switcher-handle {
+	.asSwitcher-handle {
 		width: @switchSkin8-HandleWidth;
 		height: @switchSkin8-Height;
 	}
 
 	&.is-on {
-		.switcher-inner-box {
+		.asSwitcher-inner-box {
 			margin-left: 0;
 		}
 
-		.switcher-handle {
+		.asSwitcher-handle {
 			left: @switchSkin8-Width - @switchSkin8-HandleWidth;
 			background-color: @switchSkin8-IsOnHandleBgColor;
 		}
@@ -66,11 +66,11 @@
 	
 	&.is-off {
 
-		.switcher-inner-box {
+		.asSwitcher-inner-box {
 			margin-left: @switchSkin8-HandleWidth - @switchSkin8-Width;
 		}
 
-		.switcher-handle {
+		.asSwitcher-handle {
 			left: 0;
 			background-color: @switchSkin8-IsOffHandleBgColor;
 		}

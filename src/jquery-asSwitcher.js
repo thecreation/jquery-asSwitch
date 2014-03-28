@@ -1,10 +1,15 @@
-/*! jquery switcher - v0.1.0 - 2014-01-28
-* https://github.com/amazingSurge/jquery-switcher
-* Copyright (c) 2014 amazingSurge; Licensed GPL */
+/*
+ * switcher
+ * https://github.com/amazingSurge/switcher
+ *
+ * Copyright (c) 2013 amazingSurge
+ * Licensed under the GPL license.
+ */
+
 (function($) {
     "use strict";
 
-    var Switcher = $.switcher = function(element, options) {
+    var AsSwitcher = $.asSwitcher = function(element, options) {
         this.$element = $(element).wrap('<div></div>');
         this.$parent = this.$element.parent();
 
@@ -13,7 +18,7 @@
             checked: this.$element.prop('checked')
         };
 
-        this.options = $.extend({}, Switcher.defaults, options, meta);
+        this.options = $.extend({}, AsSwitcher.defaults, options, meta);
         this.namespace = this.options.namespace;
 
         this.classes = {
@@ -39,8 +44,8 @@
         this.init();
     };
 
-    Switcher.prototype = {
-        constuctor: Switcher,
+    AsSwitcher.prototype = {
+        constuctor: AsSwitcher,
         init: function() {
             var opts = this.options;
 
@@ -61,13 +66,13 @@
             this.distance = w - h / 2;
 
             if (this.options.clickable === true) {
-                this.$parent.on('click.switcher touchstart.switcher', $.proxy(this.click, this));
+                this.$parent.on('click.asSwitcher touchstart.asSwitcher', $.proxy(this.click, this));
 
             }
 
             if (this.options.dragable === true) {
-                this.$handle.on('mousedown.switcher touchstart.switcher', $.proxy(this.mousedown, this));
-                this.$handle.on('click.switcher', function() {
+                this.$handle.on('mousedown.asSwitcher touchstart.asSwitcher', $.proxy(this.mousedown, this));
+                this.$handle.on('click.asSwitcher', function() {
                     return false;
                 });
             }
@@ -79,7 +84,7 @@
         },
         _trigger: function(eventType) {
             // event
-            this.$element.trigger('switcher::' + eventType, this);
+            this.$element.trigger('asSwitcher::' + eventType, this);
 
             // callback
             eventType = eventType.replace(/\b\w+\b/g, function(word) {
@@ -167,47 +172,38 @@
                 }
 
                 this.move(dragDistance);
-                this.$handle.off('mouseup');
+                this.$handle.off('mouseup.asSwitcher');
                 return false;
             };
-
             this.mouseup = function() {
                 var currPos = parseInt(this.$innerBox.css('margin-left'), 10);
-
                 if (Math.abs(currPos) >= this.distance / 2) {
                     this.set(false);
                 }
-
                 if (Math.abs(currPos) < this.distance / 2) {
                     this.set(true);
                 }
 
-                $(document).off({
-                    mousemove: this.mousemove,
-                    mouseup: this.mouseup,
-                    touchmove: this.mousemove,
-                    touchend: this.mouseup
-                });
-
-                this.$handle.off('mouseup');
+                $(document).off('.asSwitcher');
+                this.$handle.off('mouseup.asSwitcher');
                 return false;
             };
 
             $(document).on({
-                'mousemove.switcher': $.proxy(this.mousemove, this),
-                'mouseup.switcher': $.proxy(this.mouseup, this),
-                'touchmove.switcher': $.proxy(this.mousemove, this),
-                'touchend.switcher': $.proxy(this.mouseup, this)
+                'mousemove.asSwitcher': $.proxy(this.mousemove, this),
+                'mouseup.asSwitcher': $.proxy(this.mouseup, this),
+                'touchmove.asSwitcher': $.proxy(this.mousemove, this),
+                'touchend.asSwitcher': $.proxy(this.mouseup, this)
             });
 
             if (this.options.clickable) {
-                this.$handle.one('mouseup.switcher touchend.switcher', function() {
+                this.$handle.one('mouseup.asSwitcher touchend.asSwitcher', function() {
                     if (self.checked) {
                         self.set(false);
                     } else {
                         self.set(true);
                     }
-                    $(document).off('.switcher');
+                    $(document).off('.asSwitcher');
                 });
             }
 
@@ -273,12 +269,12 @@
             return this;
         },
         destroy: function() {
-            this.$parent.off('.switcher');
-            this.$handle.off('.switcher');
+            this.$parent.off('.asSwitcher');
+            this.$handle.off('.asSwitcher');
         }
     };
-    Switcher.defaults = {
-        namespace: 'switcher',
+    AsSwitcher.defaults = {
+        namespace: 'asSwitcher',
         skin: null,
 
         dragable: true,
@@ -293,19 +289,19 @@
 
     };
 
-    $.fn.switcher = function(options) {
+    $.fn.asSwitcher = function(options) {
         if (typeof options === 'string') {
             var method = options;
             var method_arguments = arguments.length > 1 ? Array.prototype.slice.call(arguments, 1) : undefined;
 
             if (/^(get)$/.test(method)) {
-                var api = this.first().data('switcher');
+                var api = this.first().data('asSwitcher');
                 if (api && typeof api[method] === 'function') {
                     return api[method].apply(api, method_arguments);
                 }
             } else {
                 return this.each(function() {
-                    var api = $.data(this, 'switcher');
+                    var api = $.data(this, 'asSwitcher');
                     if (api && typeof api[method] === 'function') {
                         api[method].apply(api, method_arguments);
                     }
@@ -313,8 +309,8 @@
             }
         } else {
             return this.each(function() {
-                if (!$.data(this, 'switcher')) {
-                    $.data(this, 'switcher', new Switcher(this, options));
+                if (!$.data(this, 'asSwitcher')) {
+                    $.data(this, 'asSwitcher', new AsSwitcher(this, options));
                 }
             });
         }

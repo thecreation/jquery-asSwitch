@@ -17,18 +17,18 @@
 //=======================
 
 
-.switcher.switcher_skin-3 {
+.asSwitcher.asSwitcher_skin-3 {
 	height: @switchSkin3-Height;
 	width: @switchSkin3-Width;
 
 	.border-radius(3px);
 
-	.switcher-inner-box {
+	.asSwitcher-inner-box {
 		height: @switchSkin3-Height;
 		width: @switchSkin3-BoxWidth;
 	}
 
-	.switcher-on {
+	.asSwitcher-on {
 		height: @switchSkin3-Height;
 		width: @switchSkin3-OnWidth;
 		text-indent: 13px;
@@ -38,7 +38,7 @@
 		color: @switchSkin3-TextColor;
 		background-color: @switchSkin3-OnBgColor;
 	}
-	.switcher-off {
+	.asSwitcher-off {
 		height: @switchSkin3-Height;
 		width: @switchSkin3-OffWidth;
 		text-indent: 24px;
@@ -48,7 +48,7 @@
 		color: @switchSkin3-TextColor;
 		background-color: @switchSkin3-OffBgColor;
 	}
-	.switcher-handle {
+	.asSwitcher-handle {
 		width: @switchSkin3-HandleWidth;
 		height: @switchSkin3-Height;
 		background-color: @switchSkin3-HandleBgColor;
@@ -59,15 +59,15 @@
 	&.is-on {
 		background-color: @switchSkin3-OnBgColor;
 		border: 2px solid @switchSkin3-OnBgColor;
-		.switcher-inner-box {
+		.asSwitcher-inner-box {
 			margin-left: 0;
 		}
 	
-		.switcher-off {
+		.asSwitcher-off {
 			background-color: @switchSkin3-OnBgColor;
 		}
 
-		.switcher-handle {
+		.asSwitcher-handle {
 			left: @switchSkin3-Width - @switchSkin3-HandleWidth;
 		}
 	}
@@ -76,15 +76,15 @@
 			background-color: @switchSkin3-OffBgColor;
 			border: 2px solid @switchSkin3-OffBgColor;
 
-		.switcher-inner-box {
+		.asSwitcher-inner-box {
 			margin-left: @switchSkin3-HandleWidth - @switchSkin3-Width;
 		}
 
-		.switcher-on {
+		.asSwitcher-on {
 			background-color: @switchSkin3-OffBgColor;
 		}
 
-		.switcher-handle {
+		.asSwitcher-handle {
 			left: 0;
 		}
 	}

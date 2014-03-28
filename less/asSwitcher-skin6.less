@@ -16,7 +16,7 @@
 //=======================
 
 
-.switcher.switcher_skin-6 {
+.asSwitcher.asSwitcher_skin-6 {
 	height: @switchSkin6-Height;
 	width: @switchSkin6-Width;
 	///* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -40,16 +40,16 @@
 		#gradient > .vertical(@startColor: rgba(255,255,255,0.25), @start: 50%, @endColor: rgba(245,246,241,0.1), @end: 100%);
 		.border-radius(15px);
 	}
-	.switcher-inner {
+	.asSwitcher-inner {
 		.border-radius(30px);
 	}
 
-	.switcher-inner-box {
+	.asSwitcher-inner-box {
 		height: @switchSkin6-Height;
 		width: @switchSkin6-BoxWidth;
 	}
 
-	.switcher-on {
+	.asSwitcher-on {
 		height: @switchSkin6-Height;
 		width: @switchSkin6-OnWidth;
 		line-height: @switchSkin6-Height;
@@ -65,7 +65,7 @@
 		background-repeat: no-repeat;
 		background-color: @switchSkin6-OnBgColor;
 	}
-	.switcher-off {
+	.asSwitcher-off {
 		height: @switchSkin6-Height;
 		width: @switchSkin6-OffWidth;
 		line-height: @switchSkin6-Height;
@@ -81,7 +81,7 @@
 		background-repeat: no-repeat;
 		background-color: @switchSkin6-OffBgColor;
 	}
-	.switcher-handle {
+	.asSwitcher-handle {
 		z-index: 999;
 		width: @switchSkin6-HandleWidth;
 		height: @switchSkin6-Height;
@@ -111,11 +111,11 @@
 		border: 1px solid lighten(@switchSkin6-OnBgColor,10%);;
 		border-top-color: darken(@switchSkin6-OnBgColor,20%);
 		border-left-color: darken(@switchSkin6-OnBgColor,20%);
-		.switcher-inner-box {
+		.asSwitcher-inner-box {
 			margin-left: 0;
 		}
 
-		.switcher-handle {
+		.asSwitcher-handle {
 			left: @switchSkin6-Width - @switchSkin6-HandleWidth;
 		}
 	}
@@ -125,11 +125,11 @@
 		border: 1px solid lighten(@switchSkin6-OffBgColor,10%);;
 		border-top-color: darken(@switchSkin6-OffBgColor,20%);
 		border-right-color: darken(@switchSkin6-OffBgColor,20%);
-		.switcher-inner-box {
+		.asSwitcher-inner-box {
 			margin-left: @switchSkin6-HandleWidth - @switchSkin6-Width;
 		}
 
-		.switcher-handle {
+		.asSwitcher-handle {
 			left: 0;
 		}
 	}

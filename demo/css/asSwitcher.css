@@ -1,3 +1,68 @@
+
+
+
+
+
+
+.asSwitcher.asSwitcher_skin-8 {
+  width: 68px;
+  height: 26px;
+  background-color: #323232;
+  border: 2px solid #323232;
+}
+
+.asSwitcher.asSwitcher_skin-8 .asSwitcher-inner-box {
+  width: 110px;
+  height: 26px;
+}
+
+.asSwitcher.asSwitcher_skin-8 .asSwitcher-on {
+  width: 55px;
+  height: 26px;
+  font-family: "BPreplay", sans-serif;
+  font-size: 14px;
+  line-height: 26px;
+  color: #ffffff;
+  text-indent: 13px;
+  background-color: #323232;
+}
+
+.asSwitcher.asSwitcher_skin-8 .asSwitcher-off {
+  width: 55px;
+  height: 26px;
+  font-family: "BPreplay", sans-serif;
+  font-size: 14px;
+  line-height: 26px;
+  color: #ffffff;
+  text-indent: 24px;
+  background-color: #323232;
+}
+
+.asSwitcher.asSwitcher_skin-8 .asSwitcher-handle {
+  width: 26px;
+  height: 26px;
+}
+
+.asSwitcher.asSwitcher_skin-8.is-on .asSwitcher-inner-box {
+  margin-left: 0;
+}
+
+.asSwitcher.asSwitcher_skin-8.is-on .asSwitcher-handle {
+  left: 42px;
+  background-color: #27acd8;
+}
+
+.asSwitcher.asSwitcher_skin-8.is-off .asSwitcher-inner-box {
+  margin-left: -42px;
+}
+
+.asSwitcher.asSwitcher_skin-8.is-off .asSwitcher-handle {
+  left: 0;
+  background-color: #ffffff;
+}
+
+
+
 /*! normalize.css v2.0.1 | MIT License | git.io/normalize */
 
 /* ==========================================================================
@@ -392,24 +457,24 @@ iframe[seamless] {
   border: 0 none transparent;
 }
 
-.switcher {
+.asSwitcher {
   position: relative;
   display: inline-block;
 }
 
-.switcher:hover {
+.asSwitcher:hover {
   cursor: pointer;
 }
 
-.switcher > input {
+.asSwitcher > input {
   display: none;
 }
 
-.switcher .switcher-inner {
+.asSwitcher .asSwitcher-inner {
   overflow: hidden;
 }
 
-.switcher .switcher-on {
+.asSwitcher .asSwitcher-on {
   display: block;
   float: left;
   -webkit-user-select: none;
@@ -419,7 +484,7 @@ iframe[seamless] {
           user-select: none;
 }
 
-.switcher .switcher-off {
+.asSwitcher .asSwitcher-off {
   display: block;
   float: left;
   -webkit-user-select: none;
@@ -429,17 +494,17 @@ iframe[seamless] {
           user-select: none;
 }
 
-.switcher .switcher-handle {
+.asSwitcher .asSwitcher-handle {
   position: absolute;
   top: 0;
 }
 
-.switcher .switcher-handle:hover {
+.asSwitcher .asSwitcher-handle:hover {
   cursor: pointer;
   cursor: -moz-grab;
 }
 
-.switcher.switcher_skin-3 {
+.asSwitcher.asSwitcher_skin-3 {
   width: 68px;
   height: 26px;
   -webkit-border-radius: 3px;
@@ -447,12 +512,12 @@ iframe[seamless] {
           border-radius: 3px;
 }
 
-.switcher.switcher_skin-3 .switcher-inner-box {
+.asSwitcher.asSwitcher_skin-3 .asSwitcher-inner-box {
   width: 110px;
   height: 26px;
 }
 
-.switcher.switcher_skin-3 .switcher-on {
+.asSwitcher.asSwitcher_skin-3 .asSwitcher-on {
   width: 55px;
   height: 26px;
   font-family: "BPreplay", sans-serif;
@@ -463,7 +528,7 @@ iframe[seamless] {
   background-color: #7ebdcb;
 }
 
-.switcher.switcher_skin-3 .switcher-off {
+.asSwitcher.asSwitcher_skin-3 .asSwitcher-off {
   width: 55px;
   height: 26px;
   font-family: "BPreplay", sans-serif;
@@ -474,7 +539,7 @@ iframe[seamless] {
   background-color: #cfcdc7;
 }
 
-.switcher.switcher_skin-3 .switcher-handle {
+.asSwitcher.asSwitcher_skin-3 .asSwitcher-handle {
   width: 26px;
   height: 26px;
   background-color: #ffffff;
@@ -483,41 +548,41 @@ iframe[seamless] {
           border-radius: 3px;
 }
 
-.switcher.switcher_skin-3.is-on {
+.asSwitcher.asSwitcher_skin-3.is-on {
   background-color: #7ebdcb;
   border: 2px solid #7ebdcb;
 }
 
-.switcher.switcher_skin-3.is-on .switcher-inner-box {
+.asSwitcher.asSwitcher_skin-3.is-on .asSwitcher-inner-box {
   margin-left: 0;
 }
 
-.switcher.switcher_skin-3.is-on .switcher-off {
+.asSwitcher.asSwitcher_skin-3.is-on .asSwitcher-off {
   background-color: #7ebdcb;
 }
 
-.switcher.switcher_skin-3.is-on .switcher-handle {
+.asSwitcher.asSwitcher_skin-3.is-on .asSwitcher-handle {
   left: 42px;
 }
 
-.switcher.switcher_skin-3.is-off {
+.asSwitcher.asSwitcher_skin-3.is-off {
   background-color: #cfcdc7;
   border: 2px solid #cfcdc7;
 }
 
-.switcher.switcher_skin-3.is-off .switcher-inner-box {
+.asSwitcher.asSwitcher_skin-3.is-off .asSwitcher-inner-box {
   margin-left: -42px;
 }
 
-.switcher.switcher_skin-3.is-off .switcher-on {
+.asSwitcher.asSwitcher_skin-3.is-off .asSwitcher-on {
   background-color: #cfcdc7;
 }
 
-.switcher.switcher_skin-3.is-off .switcher-handle {
+.asSwitcher.asSwitcher_skin-3.is-off .asSwitcher-handle {
   left: 0;
 }
 
-.switcher.switcher_skin-4 {
+.asSwitcher.asSwitcher_skin-4 {
   width: 80px;
   height: 24px;
   -webkit-border-radius: 16px;
@@ -525,7 +590,7 @@ iframe[seamless] {
           border-radius: 16px;
 }
 
-.switcher.switcher_skin-4:after {
+.asSwitcher.asSwitcher_skin-4:after {
   position: absolute;
   top: -3px;
   right: -3px;
@@ -539,18 +604,18 @@ iframe[seamless] {
   content: "";
 }
 
-.switcher.switcher_skin-4 .switcher-inner {
+.asSwitcher.asSwitcher_skin-4 .asSwitcher-inner {
   -webkit-border-radius: 16px;
      -moz-border-radius: 16px;
           border-radius: 16px;
 }
 
-.switcher.switcher_skin-4 .switcher-inner-box {
+.asSwitcher.asSwitcher_skin-4 .asSwitcher-inner-box {
   width: 120px;
   height: 24px;
 }
 
-.switcher.switcher_skin-4 .switcher-on {
+.asSwitcher.asSwitcher_skin-4 .asSwitcher-on {
   width: 60px;
   height: 24px;
   font-family: "BPreplay", sans-serif;
@@ -561,7 +626,7 @@ iframe[seamless] {
   background-color: #3aadd3;
 }
 
-.switcher.switcher_skin-4 .switcher-off {
+.asSwitcher.asSwitcher_skin-4 .asSwitcher-off {
   width: 60px;
   height: 24px;
   font-family: "BPreplay", sans-serif;
@@ -572,7 +637,7 @@ iframe[seamless] {
   background-color: #979797;
 }
 
-.switcher.switcher_skin-4 .switcher-handle {
+.asSwitcher.asSwitcher_skin-4 .asSwitcher-handle {
   width: 40px;
   height: 24px;
   background-color: #ffffff;
@@ -581,7 +646,7 @@ iframe[seamless] {
           border-radius: 16px;
 }
 
-.switcher.switcher_skin-4 .switcher-handle:after {
+.asSwitcher.asSwitcher_skin-4 .asSwitcher-handle:after {
   position: absolute;
   z-index: 1;
   width: 40px;
@@ -595,55 +660,55 @@ iframe[seamless] {
           box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.4);
 }
 
-.switcher.switcher_skin-4.is-on {
+.asSwitcher.asSwitcher_skin-4.is-on {
   background-color: #3aadd3;
   border: 3px solid #3aadd3;
 }
 
-.switcher.switcher_skin-4.is-on:after {
+.asSwitcher.asSwitcher_skin-4.is-on:after {
   border-color: #2ea7cf;
 }
 
-.switcher.switcher_skin-4.is-on .switcher-inner-box {
+.asSwitcher.asSwitcher_skin-4.is-on .asSwitcher-inner-box {
   margin-left: 0;
 }
 
-.switcher.switcher_skin-4.is-on .switcher-off {
+.asSwitcher.asSwitcher_skin-4.is-on .asSwitcher-off {
   background-color: #3aadd3;
 }
 
-.switcher.switcher_skin-4.is-on .switcher-handle {
+.asSwitcher.asSwitcher_skin-4.is-on .asSwitcher-handle {
   left: 40px;
   -webkit-box-shadow: inset 0 -3px 3px -1px #8dd0e6;
      -moz-box-shadow: inset 0 -3px 3px -1px #8dd0e6;
           box-shadow: inset 0 -3px 3px -1px #8dd0e6;
 }
 
-.switcher.switcher_skin-4.is-off {
+.asSwitcher.asSwitcher_skin-4.is-off {
   background-color: #979797;
   border: 3px solid #979797;
 }
 
-.switcher.switcher_skin-4.is-off:after {
+.asSwitcher.asSwitcher_skin-4.is-off:after {
   border-color: #8f8f8f;
 }
 
-.switcher.switcher_skin-4.is-off .switcher-inner-box {
+.asSwitcher.asSwitcher_skin-4.is-off .asSwitcher-inner-box {
   margin-left: -40px;
 }
 
-.switcher.switcher_skin-4.is-off .switcher-on {
+.asSwitcher.asSwitcher_skin-4.is-off .asSwitcher-on {
   background-color: #979797;
 }
 
-.switcher.switcher_skin-4.is-off .switcher-handle {
+.asSwitcher.asSwitcher_skin-4.is-off .asSwitcher-handle {
   left: 0;
   -webkit-box-shadow: inset 0 -3px 3px -1px #cacaca;
      -moz-box-shadow: inset 0 -3px 3px -1px #cacaca;
           box-shadow: inset 0 -3px 3px -1px #cacaca;
 }
 
-.switcher.switcher_skin-6 {
+.asSwitcher.asSwitcher_skin-6 {
   width: 82px;
   height: 30px;
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
@@ -663,7 +728,7 @@ iframe[seamless] {
           box-shadow: inset 0 1px 3px 0px rgba(0, 0, 0, 0.35);
 }
 
-.switcher.switcher_skin-6:after {
+.asSwitcher.asSwitcher_skin-6:after {
   position: absolute;
   top: 50%;
   left: 3px;
@@ -683,18 +748,18 @@ iframe[seamless] {
   content: "";
 }
 
-.switcher.switcher_skin-6 .switcher-inner {
+.asSwitcher.asSwitcher_skin-6 .asSwitcher-inner {
   -webkit-border-radius: 30px;
      -moz-border-radius: 30px;
           border-radius: 30px;
 }
 
-.switcher.switcher_skin-6 .switcher-inner-box {
+.asSwitcher.asSwitcher_skin-6 .asSwitcher-inner-box {
   width: 134px;
   height: 30px;
 }
 
-.switcher.switcher_skin-6 .switcher-on {
+.asSwitcher.asSwitcher_skin-6 .asSwitcher-on {
   width: 67px;
   height: 30px;
   overflow: hidden;
@@ -709,7 +774,7 @@ iframe[seamless] {
   background-repeat: no-repeat;
 }
 
-.switcher.switcher_skin-6 .switcher-off {
+.asSwitcher.asSwitcher_skin-6 .asSwitcher-off {
   width: 67px;
   height: 30px;
   overflow: hidden;
@@ -724,7 +789,7 @@ iframe[seamless] {
   background-repeat: no-repeat;
 }
 
-.switcher.switcher_skin-6 .switcher-handle {
+.asSwitcher.asSwitcher_skin-6 .asSwitcher-handle {
   z-index: 999;
   width: 30px;
   height: 30px;
@@ -744,7 +809,7 @@ iframe[seamless] {
           box-shadow: inset 0 0 1px 2px #ffffff;
 }
 
-.switcher.switcher_skin-6 .switcher-handle:after {
+.asSwitcher.asSwitcher_skin-6 .asSwitcher-handle:after {
   position: absolute;
   top: -1px;
   right: -1px;
@@ -758,47 +823,47 @@ iframe[seamless] {
   content: "";
 }
 
-.switcher.switcher_skin-6.is-on {
+.asSwitcher.asSwitcher_skin-6.is-on {
   border: 1px solid #6ebbf1;
   border-top-color: #1271b4;
   border-left-color: #1271b4;
 }
 
-.switcher.switcher_skin-6.is-on .switcher-inner-box {
+.asSwitcher.asSwitcher_skin-6.is-on .asSwitcher-inner-box {
   margin-left: 0;
 }
 
-.switcher.switcher_skin-6.is-on .switcher-handle {
+.asSwitcher.asSwitcher_skin-6.is-on .asSwitcher-handle {
   left: 52px;
 }
 
-.switcher.switcher_skin-6.is-off {
+.asSwitcher.asSwitcher_skin-6.is-off {
   border: 1px solid #a2a2a2;
   border-top-color: #555555;
   border-right-color: #555555;
 }
 
-.switcher.switcher_skin-6.is-off .switcher-inner-box {
+.asSwitcher.asSwitcher_skin-6.is-off .asSwitcher-inner-box {
   margin-left: -52px;
 }
 
-.switcher.switcher_skin-6.is-off .switcher-handle {
+.asSwitcher.asSwitcher_skin-6.is-off .asSwitcher-handle {
   left: 0;
 }
 
-.switcher.switcher_skin-8 {
+.asSwitcher.asSwitcher_skin-8 {
   width: 68px;
   height: 26px;
   background-color: #323232;
   border: 2px solid #323232;
 }
 
-.switcher.switcher_skin-8 .switcher-inner-box {
+.asSwitcher.asSwitcher_skin-8 .asSwitcher-inner-box {
   width: 110px;
   height: 26px;
 }
 
-.switcher.switcher_skin-8 .switcher-on {
+.asSwitcher.asSwitcher_skin-8 .asSwitcher-on {
   width: 55px;
   height: 26px;
   font-family: "BPreplay", sans-serif;
@@ -809,7 +874,7 @@ iframe[seamless] {
   background-color: #323232;
 }
 
-.switcher.switcher_skin-8 .switcher-off {
+.asSwitcher.asSwitcher_skin-8 .asSwitcher-off {
   width: 55px;
   height: 26px;
   font-family: "BPreplay", sans-serif;
@@ -820,30 +885,30 @@ iframe[seamless] {
   background-color: #323232;
 }
 
-.switcher.switcher_skin-8 .switcher-handle {
+.asSwitcher.asSwitcher_skin-8 .asSwitcher-handle {
   width: 26px;
   height: 26px;
 }
 
-.switcher.switcher_skin-8.is-on .switcher-inner-box {
+.asSwitcher.asSwitcher_skin-8.is-on .asSwitcher-inner-box {
   margin-left: 0;
 }
 
-.switcher.switcher_skin-8.is-on .switcher-handle {
+.asSwitcher.asSwitcher_skin-8.is-on .asSwitcher-handle {
   left: 42px;
   background-color: #27acd8;
 }
 
-.switcher.switcher_skin-8.is-off .switcher-inner-box {
+.asSwitcher.asSwitcher_skin-8.is-off .asSwitcher-inner-box {
   margin-left: -42px;
 }
 
-.switcher.switcher_skin-8.is-off .switcher-handle {
+.asSwitcher.asSwitcher_skin-8.is-off .asSwitcher-handle {
   left: 0;
   background-color: #ffffff;
 }
 
-.switcher.switcher_skin-9 {
+.asSwitcher.asSwitcher_skin-9 {
   width: 92px;
   height: 32px;
   -webkit-border-radius: 3px;
@@ -851,7 +916,7 @@ iframe[seamless] {
           border-radius: 3px;
 }
 
-.switcher.switcher_skin-9:after {
+.asSwitcher.asSwitcher_skin-9:after {
   position: absolute;
   top: -9px;
   right: -9px;
@@ -871,18 +936,18 @@ iframe[seamless] {
   content: "";
 }
 
-.switcher.switcher_skin-9 .switcher-inner {
+.asSwitcher.asSwitcher_skin-9 .asSwitcher-inner {
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
           border-radius: 3px;
 }
 
-.switcher.switcher_skin-9 .switcher-inner-box {
+.asSwitcher.asSwitcher_skin-9 .asSwitcher-inner-box {
   width: 138px;
   height: 32px;
 }
 
-.switcher.switcher_skin-9 .switcher-on {
+.asSwitcher.asSwitcher_skin-9 .asSwitcher-on {
   width: 69px;
   height: 32px;
   overflow: hidden;
@@ -897,7 +962,7 @@ iframe[seamless] {
   background-repeat: no-repeat;
 }
 
-.switcher.switcher_skin-9 .switcher-off {
+.asSwitcher.asSwitcher_skin-9 .asSwitcher-off {
   width: 69px;
   height: 32px;
   overflow: hidden;
@@ -912,7 +977,7 @@ iframe[seamless] {
   background-repeat: no-repeat;
 }
 
-.switcher.switcher_skin-9 .switcher-handle {
+.asSwitcher.asSwitcher_skin-9 .asSwitcher-handle {
   z-index: 999;
   width: 46px;
   height: 32px;
@@ -925,7 +990,7 @@ iframe[seamless] {
           box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.4);
 }
 
-.switcher.switcher_skin-9 .switcher-handle:after {
+.asSwitcher.asSwitcher_skin-9 .asSwitcher-handle:after {
   position: absolute;
   top: 2px;
   left: 2px;
@@ -948,7 +1013,7 @@ iframe[seamless] {
           box-shadow: inset -3px 0 5px -1px rgba(0, 0, 0, 0.3);
 }
 
-.switcher.switcher_skin-9 .switcher-handle:before {
+.asSwitcher.asSwitcher_skin-9 .asSwitcher-handle:before {
   position: absolute;
   top: 2px;
   right: 2px;
@@ -971,37 +1036,37 @@ iframe[seamless] {
           box-shadow: inset 3px 0 5px -1px rgba(0, 0, 0, 0.3);
 }
 
-.switcher.switcher_skin-9.is-on {
+.asSwitcher.asSwitcher_skin-9.is-on {
   background-color: #73bb00;
   border: 4px solid #73bb00;
 }
 
-.switcher.switcher_skin-9.is-on .switcher-inner-box {
+.asSwitcher.asSwitcher_skin-9.is-on .asSwitcher-inner-box {
   margin-left: 0;
 }
 
-.switcher.switcher_skin-9.is-on .switcher-off {
+.asSwitcher.asSwitcher_skin-9.is-on .asSwitcher-off {
   background-color: #73bb00;
 }
 
-.switcher.switcher_skin-9.is-on .switcher-handle {
+.asSwitcher.asSwitcher_skin-9.is-on .asSwitcher-handle {
   left: 46px;
 }
 
-.switcher.switcher_skin-9.is-off {
+.asSwitcher.asSwitcher_skin-9.is-off {
   background-color: #999999;
   border: 4px solid #999999;
 }
 
-.switcher.switcher_skin-9.is-off .switcher-inner-box {
+.asSwitcher.asSwitcher_skin-9.is-off .asSwitcher-inner-box {
   margin-left: -46px;
 }
 
-.switcher.switcher_skin-9.is-off .switcher-on {
+.asSwitcher.asSwitcher_skin-9.is-off .asSwitcher-on {
   background-color: #999999;
 }
 
-.switcher.switcher_skin-9.is-off .switcher-handle {
+.asSwitcher.asSwitcher_skin-9.is-off .asSwitcher-handle {
   left: 0;
 }
 
@@ -1400,67 +1465,3 @@ iframe[seamless] {
   background-color: transparent;
   border: 0 none transparent;
 }
-
-
-
-
-
-
-
-.switcher.switcher_skin-8 {
-  width: 68px;
-  height: 26px;
-  background-color: #323232;
-  border: 2px solid #323232;
-}
-
-.switcher.switcher_skin-8 .switcher-inner-box {
-  width: 110px;
-  height: 26px;
-}
-
-.switcher.switcher_skin-8 .switcher-on {
-  width: 55px;
-  height: 26px;
-  font-family: "BPreplay", sans-serif;
-  font-size: 14px;
-  line-height: 26px;
-  color: #ffffff;
-  text-indent: 13px;
-  background-color: #323232;
-}
-
-.switcher.switcher_skin-8 .switcher-off {
-  width: 55px;
-  height: 26px;
-  font-family: "BPreplay", sans-serif;
-  font-size: 14px;
-  line-height: 26px;
-  color: #ffffff;
-  text-indent: 24px;
-  background-color: #323232;
-}
-
-.switcher.switcher_skin-8 .switcher-handle {
-  width: 26px;
-  height: 26px;
-}
-
-.switcher.switcher_skin-8.is-on .switcher-inner-box {
-  margin-left: 0;
-}
-
-.switcher.switcher_skin-8.is-on .switcher-handle {
-  left: 42px;
-  background-color: #27acd8;
-}
-
-.switcher.switcher_skin-8.is-off .switcher-inner-box {
-  margin-left: -42px;
-}
-
-.switcher.switcher_skin-8.is-off .switcher-handle {
-  left: 0;
-  background-color: #ffffff;
-}
-
