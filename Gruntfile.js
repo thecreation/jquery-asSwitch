@@ -30,7 +30,6 @@ module.exports = function(grunt) {
                 dest: 'dist/<%= pkg.name %>.min.js'
             },
         },
-
         jshint: {
             gruntfile: {
                 options: {
@@ -65,7 +64,6 @@ module.exports = function(grunt) {
                 tasks: ['jshint:test', 'qunit']
             },
         },
-
         jsbeautifier: {
             files: ["Gruntfile.js", "src/**/*.js"],
             options: {
