@@ -13,12 +13,6 @@
             checked: this.$element.prop('checked')
         };
 
-        if (this.$element.attr('name')) {
-            this.name = this.$element.attr('name');
-        } else {
-            this.name = options.name;
-        }
-
         this.options = $.extend({}, AsSwitcher.defaults, options, meta, this.$element.data());
         this.namespace = this.options.namespace;
 
@@ -274,7 +268,6 @@
     AsSwitcher.defaults = {
         namespace: 'asSwitcher',
         skin: null,
-        name: null,
 
         dragable: true,
         clickable: true,
