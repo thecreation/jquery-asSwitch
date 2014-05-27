@@ -20,7 +20,6 @@
 
         this.options = $.extend({}, AsSwitcher.defaults, options, meta, this.$element.data());
         this.namespace = this.options.namespace;
-
         this.classes = {
             skin: this.namespace + '_' + this.options.skin,
             on: this.namespace + '_on',
@@ -67,7 +66,6 @@
 
             if (this.options.clickable === true) {
                 this.$wrap.on('click.asSwitcher touchstart.asSwitcher', $.proxy(this.click, this));
-
             }
 
             if (this.options.dragable === true) {
@@ -81,6 +79,10 @@
             this.initialized = true;
 
             this._trigger('ready');
+
+            if(this.disabled){
+                this.disable();
+            }
         },
         _trigger: function(eventType) {
             // event
@@ -145,6 +147,10 @@
             if (!this._click) {
                 this._click = true;
                 return false;
+            }
+
+            if (this.disabled) {
+                return;
             }
 
             if (this.checked) {
@@ -220,9 +226,6 @@
         },
         set: function(value) {
             var self = this;
-            if (this.disabled) {
-                return;
-            }
             switch (value) {
                 case true:
                     this.checked = value;
@@ -261,7 +264,7 @@
         disable: function() {
             this.disabled = true;
             this.$element.prop('disabled', true);
-            this.$wrap.addClass(this.disbaled);
+            this.$wrap.addClass(this.classes.disabled);
             return this;
         },
         destroy: function() {
