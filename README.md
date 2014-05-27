@@ -33,13 +33,12 @@ Create base html element:
 
 Initialize tabs:
 ```javascript
-$(".sw-3").asSwitcher({skin: 'skin-3'});
+$(".sw-3").asSwitcher();
 ```
 
 Or initialize tabs with custom settings:
 ```javascript
 $(".sw-3").asSwitcher({
-    skin: 'skin-8',
     dragable: true,
     clickable: true,
     disabled: false,
@@ -62,7 +61,7 @@ the most important thing is you should set skin value to let plugin find his shi
 {   
 
     // Compulsory property,it works after you load  the specified skin file
-    skin: 'skin-8',
+    skin: null,
     
     //Optional property, if false the function of dragable will be stop
     dragable: true,
@@ -140,5 +139,3 @@ Mobile browsers (like Opera mini, Chrome mobile, Safari mobile, Android browser 
 
 ## License
 jQuery-asSwitcher plugin is released under the <a href="https://github.com/amazingSurge/jquery-asSwitcher/blob/master/LICENCE.GPL" target="_blank">GPL licence</a>.
-
-

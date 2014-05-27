@@ -1,8 +1,8 @@
 /*
- * switcher
- * https://github.com/amazingSurge/switcher
+ * jquery-asSwitcher
+ * https://github.com/amazingSurge/jquery-asSwitcher
  *
- * Copyright (c) 2013 amazingSurge
+ * Copyright (c) 2014 amazingSurge
  * Licensed under the GPL license.
  */
 
