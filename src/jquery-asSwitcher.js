@@ -6,12 +6,12 @@
  * Licensed under the GPL license.
  */
 
-(function($) {
+(function($, document, window, undefined) {
     "use strict";
 
     var AsSwitcher = $.asSwitcher = function(element, options) {
         this.$element = $(element).wrap('<div></div>');
-        this.$parent = this.$element.parent();
+        this.$wrap = this.$element.parent();
 
         var meta = {
             disabled: this.$element.prop('disabled'),
@@ -24,7 +24,7 @@
             this.name = options.name;
         }
 
-        this.options = $.extend({}, AsSwitcher.defaults, options, meta);
+        this.options = $.extend({}, AsSwitcher.defaults, options, meta, this.$element.data());
         this.namespace = this.options.namespace;
 
         this.classes = {
@@ -34,10 +34,10 @@
             disabled: this.namespace + '_disabled'
         };
 
-        this.$parent.addClass(this.namespace);
+        this.$wrap.addClass(this.namespace);
 
         if (this.options.skin) {
-            this.$parent.addClass(this.classes.skin);
+            this.$wrap.addClass(this.classes.skin);
         }
 
         this.checked = this.options.checked;
@@ -63,7 +63,7 @@
 
             this.$innerBox.append(this.$on, this.$off);
             this.$inner.append(this.$innerBox);
-            this.$parent.append(this.$inner, this.$handle);
+            this.$wrap.append(this.$inner, this.$handle);
 
             // get components width
             var w = this.$on.width();
@@ -72,7 +72,7 @@
             this.distance = w - h / 2;
 
             if (this.options.clickable === true) {
-                this.$parent.on('click.asSwitcher touchstart.asSwitcher', $.proxy(this.click, this));
+                this.$wrap.on('click.asSwitcher touchstart.asSwitcher', $.proxy(this.click, this));
 
             }
 
@@ -234,14 +234,14 @@
                     this.checked = value;
                     this.$element.prop('checked', true);
                     this.animate(0, function() {
-                        self.$parent.removeClass(self.classes.off).addClass(self.classes.on);
+                        self.$wrap.removeClass(self.classes.off).addClass(self.classes.on);
                     });
                     break;
                 case false:
                     this.checked = value;
                     this.$element.prop('checked', false);
                     this.animate(-this.distance, function() {
-                        self.$parent.removeClass(self.classes.on).addClass(self.classes.off);
+                        self.$wrap.removeClass(self.classes.on).addClass(self.classes.off);
                     });
                     break;
             }
@@ -251,11 +251,6 @@
         get: function() {
             return this.$element.prop('checked');
         },
-
-        /*
-            Public Method
-         */
-
         val: function(value) {
             if (value) {
                 this.set(value);
@@ -266,20 +261,21 @@
         enable: function() {
             this.disabled = false;
             this.$element.prop('disabled', false);
-            this.$parent.removeClass(this.classes.disabled);
+            this.$wrap.removeClass(this.classes.disabled);
             return this;
         },
         disable: function() {
             this.disabled = true;
             this.$element.prop('disabled', true);
-            this.$parent.addClass(this.disbaled);
+            this.$wrap.addClass(this.disbaled);
             return this;
         },
         destroy: function() {
-            this.$parent.off('.asSwitcher');
+            this.$wrap.off('.asSwitcher');
             this.$handle.off('.asSwitcher');
         }
     };
+
     AsSwitcher.defaults = {
         namespace: 'asSwitcher',
         skin: null,
@@ -294,7 +290,6 @@
 
         checked: true,
         animation: 200
-
     };
 
     $.fn.asSwitcher = function(options) {
@@ -302,7 +297,9 @@
             var method = options;
             var method_arguments = arguments.length > 1 ? Array.prototype.slice.call(arguments, 1) : undefined;
 
-            if (/^(get)$/.test(method)) {
+            if (/^\_/.test(method)) {
+                return false;
+            } else if ((/^(get)$/.test(method)) || (method === 'val' && method_arguments === undefined)) {
                 var api = this.first().data('asSwitcher');
                 if (api && typeof api[method] === 'function') {
                     return api[method].apply(api, method_arguments);
@@ -323,4 +320,4 @@
             });
         }
     };
-}(jQuery));
+})(jQuery, document, window);
