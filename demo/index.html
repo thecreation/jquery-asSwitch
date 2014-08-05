@@ -73,12 +73,20 @@
             </code></pre>
             <div class="example">
                 <input class="sw-3" type="checkbox" checked="checked" />
+                <button id="abc">abc</button>
                 <script>                   
                     $(document).ready(function() {
+                        $('.sw-3').on('change', function(){
+                            alert(this.value);
+                        });
                         $('.sw-3').asSwitcher({
                             skin: 'skin-3'
-                        });   
-                                    
+                        });
+
+                        $('#abc').click(function(){
+                            var $item = $('.sw-3');
+                            alert($item.is(":checked"));
+                        });
                     });
                 </script>
             </div>
