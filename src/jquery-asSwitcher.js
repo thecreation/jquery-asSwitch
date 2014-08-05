@@ -246,7 +246,8 @@
             }
 
             if(update !== false){
-                this.$element.prop('checked', true);
+                this.$element.prop('checked', value);
+                this.$element.trigger('change');
                 this._trigger('change', value);
             }
             

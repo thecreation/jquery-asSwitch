@@ -1,4 +1,4 @@
-/*! jquery asSwitcher - v0.1.1 - 2014-05-27
+/*! jquery asSwitcher - v0.1.1 - 2014-08-05
 * https://github.com/amazingSurge/jquery-asSwitcher
 * Copyright (c) 2014 amazingSurge; Licensed GPL */
 (function($, document, window, undefined) {
@@ -70,7 +70,7 @@
                 });
             }
 
-            this.set(this.checked);
+            this.set(this.checked, false);
             this.initialized = true;
 
             this._trigger('ready');
@@ -212,32 +212,40 @@
             return false;
         },
         check: function() {
-            this.set(true);
+            if(this.checked !== true){
+                this.set(true);
+            }
+            
             return this;
         },
         uncheck: function() {
-            this.set(false);
+            if(this.checked !== false) {
+                this.set(false);
+            }
+            
             return this;
         },
-        set: function(value) {
+        set: function(value, update) {
             var self = this;
-            switch (value) {
-                case true:
-                    this.checked = value;
-                    this.$element.prop('checked', true);
-                    this.animate(0, function() {
-                        self.$wrap.removeClass(self.classes.off).addClass(self.classes.on);
-                    });
-                    break;
-                case false:
-                    this.checked = value;
-                    this.$element.prop('checked', false);
-                    this.animate(-this.distance, function() {
-                        self.$wrap.removeClass(self.classes.on).addClass(self.classes.off);
-                    });
-                    break;
+
+            this.checked = value;
+
+            if(value === true){
+                this.animate(0, function() {
+                    self.$wrap.removeClass(self.classes.off).addClass(self.classes.on);
+                });
+            } else {
+                this.animate(-this.distance, function() {
+                    self.$wrap.removeClass(self.classes.on).addClass(self.classes.off);
+                });
             }
-            this._trigger('change', this.checked);
+
+            if(update !== false){
+                this.$element.prop('checked', value);
+                this.$element.trigger('change');
+                this._trigger('change', value);
+            }
+            
             return this;
         },
         get: function() {
