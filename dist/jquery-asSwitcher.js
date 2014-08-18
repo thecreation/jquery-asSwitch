@@ -1,4 +1,4 @@
-/*! jquery asSwitcher - v0.1.1 - 2014-08-05
+/*! jquery asSwitcher - v0.1.1 - 2014-08-18
 * https://github.com/amazingSurge/jquery-asSwitcher
 * Copyright (c) 2014 amazingSurge; Licensed GPL */
 (function($, document, window, undefined) {
@@ -80,16 +80,23 @@
             }
         },
         _trigger: function(eventType) {
+            var method_arguments = arguments.length > 1 ? Array.prototype.slice.call(arguments, 1) : undefined,
+                data;
+            if (method_arguments) {
+                data = method_arguments;
+                data.push(this);
+            }else {
+                data = this;
+            }
             // event
-            this.$element.trigger('asSwitcher::' + eventType, this);
-            this.$element.trigger(eventType + '.asSwitcher', this);
+            this.$element.trigger('asSwitcher::' + eventType, data);
+            this.$element.trigger(eventType + '.asSwitcher', data);
 
             // callback
             eventType = eventType.replace(/\b\w+\b/g, function(word) {
                 return word.substring(0, 1).toUpperCase() + word.substring(1);
             });
             var onFunction = 'on' + eventType;
-            var method_arguments = arguments.length > 1 ? Array.prototype.slice.call(arguments, 1) : undefined;
             if (typeof this.options[onFunction] === 'function') {
                 this.options[onFunction].apply(this, method_arguments);
             }
@@ -243,7 +250,7 @@
             if(update !== false){
                 this.$element.prop('checked', value);
                 this.$element.trigger('change');
-                this._trigger('change', value);
+                this._trigger('change', value, this.options.name, 'asSwitcher');
             }
             
             return this;
