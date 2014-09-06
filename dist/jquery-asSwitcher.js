@@ -1,4 +1,4 @@
-/*! jquery asSwitcher - v0.1.1 - 2014-08-18
+/*! jquery asSwitcher - v0.1.1 - 2014-09-06
 * https://github.com/amazingSurge/jquery-asSwitcher
 * Copyright (c) 2014 amazingSurge; Licensed GPL */
 (function($, document, window, undefined) {
@@ -80,17 +80,11 @@
             }
         },
         _trigger: function(eventType) {
-            var method_arguments = arguments.length > 1 ? Array.prototype.slice.call(arguments, 1) : undefined,
-                data;
-            if (method_arguments) {
-                data = method_arguments;
-                data.push(this);
-            }else {
-                data = this;
-            }
+            var method_arguments = Array.prototype.slice.call(arguments, 1),
+                data = [this].concat(method_arguments.concat);
+
             // event
             this.$element.trigger('asSwitcher::' + eventType, data);
-            this.$element.trigger(eventType + '.asSwitcher', data);
 
             // callback
             eventType = eventType.replace(/\b\w+\b/g, function(word) {
@@ -301,11 +295,11 @@
     $.fn.asSwitcher = function(options) {
         if (typeof options === 'string') {
             var method = options;
-            var method_arguments = arguments.length > 1 ? Array.prototype.slice.call(arguments, 1) : undefined;
+            var method_arguments = Array.prototype.slice.call(arguments, 1);
 
             if (/^\_/.test(method)) {
                 return false;
-            } else if ((/^(get)$/.test(method)) || (method === 'val' && method_arguments === undefined)) {
+            } else if ((/^(get)$/.test(method)) || (method === 'val' && method_arguments.length === 0)) {
                 var api = this.first().data('asSwitcher');
                 if (api && typeof api[method] === 'function') {
                     return api[method].apply(api, method_arguments);

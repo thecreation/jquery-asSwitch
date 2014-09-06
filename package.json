@@ -18,14 +18,15 @@
         "url": "https://github.com/amazingSurge/jquery-asSwitcher/blob/master/LICENSE-GPL"
     }],
     "devDependencies": {
-        "grunt-contrib-jshint": "*",
+        "grunt": "~0.4.5",
+        "grunt-contrib-clean": "*",
         "grunt-contrib-concat": "*",
+        "grunt-contrib-jshint": "*",
+        "grunt-contrib-less": "*",
+        "grunt-autoprefixer": "*",
         "grunt-contrib-uglify": "*",
         "grunt-contrib-watch": "*",
-        "grunt-contrib-clean": "*",
-        "grunt": "~0.4.5",
         "grunt-jsbeautifier": "*",
-        "grunt-recess": "*",
         "grunt-text-replace": "*",
         "load-grunt-tasks": "*"
     }

@@ -8,9 +8,12 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %>\n' + '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' + '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' + ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
         // Task configuration.
+        // -- clean Config ---------------------------------------------------------
         clean: {
             files: ['dist']
         },
+
+        // -- concat Config ---------------------------------------------------------
         concat: {
             options: {
                 banner: '<%= banner %>',
@@ -21,6 +24,8 @@ module.exports = function(grunt) {
                 dest: 'dist/<%= pkg.name %>.js'
             },
         },
+
+        // -- uglify Config ---------------------------------------------------------
         uglify: {
             options: {
                 banner: '<%= banner %>'
@@ -30,6 +35,8 @@ module.exports = function(grunt) {
                 dest: 'dist/<%= pkg.name %>.min.js'
             },
         },
+
+        // -- jshint Config ---------------------------------------------------------
         jshint: {
             gruntfile: {
                 options: {
@@ -44,6 +51,8 @@ module.exports = function(grunt) {
                 src: ['src/**/*.js']
             }
         },
+
+        // -- watch Config ---------------------------------------------------------
         watch: {
             gruntfile: {
                 files: '<%= jshint.gruntfile.src %>',
@@ -54,6 +63,8 @@ module.exports = function(grunt) {
                 tasks: ['jshint:src', 'qunit']
             }
         },
+
+        // -- jsbeautifier Config ---------------------------------------------------------
         jsbeautifier: {
             files: ["Gruntfile.js", "src/**/*.js"],
             options: {
@@ -73,15 +84,27 @@ module.exports = function(grunt) {
                 "unescape_strings": false
             }
         },
-        recess: {
-            core: {
-                src: ["less/**/*.less"],
-                dest: 'demo/css/asSwitcher.css',
-                options: {
-                    compile: true
+        
+        // -- less Config ---------------------------------------------------------
+        less: {
+            dist: {
+                files: {
+                    'demo/css/asSwitcher.css': 'less/asSwitcher.less'
                 }
-            },
+            }
         },
+
+        // -- autoprefixer Config ---------------------------------------------------------
+        autoprefixer: {
+            options: {
+                browsers: ['last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12']
+            },
+            src: {
+                src: ['demo/css/asSwitcher.css'],
+            }
+        },
+
+        // -- replace Config ---------------------------------------------------------
         replace: {
             bower: {
                 src: ['bower.json'],
@@ -108,12 +131,12 @@ module.exports = function(grunt) {
     });
 
     // Default task.
-    grunt.registerTask('default', ['jshint', 'clean', 'concat', 'uglify']);
+    grunt.registerTask('default', ['js', 'dist']);
 
-    grunt.registerTask('dist', ['concat', 'uglify']);
+    grunt.registerTask('dist', ['clean', 'concat', 'uglify']);
 
     grunt.registerTask('js', ['jsbeautifier', 'jshint']);
-    grunt.registerTask('css', ['recess']);
+    grunt.registerTask('css', ['less', 'autoprefixer']);
 
     grunt.registerTask('version', [
         'replace:bower',

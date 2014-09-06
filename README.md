@@ -1,6 +1,6 @@
 # jQuery asSwitcher
 
-The powerful jQuery plugin that creates a asSwitcher. <a href="http://amazingsurge.github.io/jquery-asSwitcher/">Project page and demos</a><br />
+The powerful jQuery plugin that creates a asSwitcher. 
 Download: <a href="https://github.com/amazingSurge/jquery-asSwitcher/archive/master.zip">jquery-asSwitcher-master.zip</a>
 
 ***
@@ -127,12 +127,6 @@ $(document).on('checked', function(event,instance) {
 jquery-tabs is verified to work in Internet Explorer 7+, Firefox 2+, Opera 9+, Google Chrome and Safari browsers. Should also work in many others.
 
 Mobile browsers (like Opera mini, Chrome mobile, Safari mobile, Android browser and others) is coming soon.
-
-## Changes
-
-| Version | Notes                                                            |
-|---------|------------------------------------------------------------------|
-|     ... | ...                                                              |
 
 ## Author
 [amazingSurge](http://amazingSurge.com)
