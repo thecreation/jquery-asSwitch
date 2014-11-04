@@ -1,10 +1,14 @@
-/*! jquery asSwitcher - v0.1.1 - 2014-09-06
-* https://github.com/amazingSurge/jquery-asSwitcher
-* Copyright (c) 2014 amazingSurge; Licensed GPL */
+/*
+ * jquery-asSwitch
+ * https://github.com/amazingSurge/jquery-asSwitch
+ *
+ * Copyright (c) 2014 amazingSurge
+ * Licensed under the GPL license.
+ */
 (function($, document, window, undefined) {
     "use strict";
 
-    var AsSwitcher = $.asSwitcher = function(element, options) {
+    var AsSwitcher = $.asSwitch = function(element, options) {
         this.$element = $(element).wrap('<div></div>');
         this.$wrap = this.$element.parent();
 
@@ -60,12 +64,12 @@
             this.distance = w - h / 2;
 
             if (this.options.clickable === true) {
-                this.$wrap.on('click.asSwitcher touchstart.asSwitcher', $.proxy(this.click, this));
+                this.$wrap.on('click.asSwitch touchstart.asSwitch', $.proxy(this.click, this));
             }
 
             if (this.options.dragable === true) {
-                this.$handle.on('mousedown.asSwitcher touchstart.asSwitcher', $.proxy(this.mousedown, this));
-                this.$handle.on('click.asSwitcher', function() {
+                this.$handle.on('mousedown.asSwitch touchstart.asSwitch', $.proxy(this.mousedown, this));
+                this.$handle.on('click.asSwitch', function() {
                     return false;
                 });
             }
@@ -75,7 +79,7 @@
 
             this._trigger('ready');
 
-            if(this.disabled){
+            if (this.disabled) {
                 this.disable();
             }
         },
@@ -84,7 +88,7 @@
                 data = [this].concat(method_arguments.concat);
 
             // event
-            this.$element.trigger('asSwitcher::' + eventType, data);
+            this.$element.trigger('asSwitch::' + eventType, data);
 
             // callback
             eventType = eventType.replace(/\b\w+\b/g, function(word) {
@@ -175,7 +179,7 @@
                 }
 
                 this.move(dragDistance);
-                this.$handle.off('mouseup.asSwitcher');
+                this.$handle.off('mouseup.asSwitch');
                 return false;
             };
             this.mouseup = function() {
@@ -187,43 +191,43 @@
                     this.set(true);
                 }
 
-                $(document).off('.asSwitcher');
-                this.$handle.off('mouseup.asSwitcher');
+                $(document).off('.asSwitch');
+                this.$handle.off('mouseup.asSwitch');
                 return false;
             };
 
             $(document).on({
-                'mousemove.asSwitcher': $.proxy(this.mousemove, this),
-                'mouseup.asSwitcher': $.proxy(this.mouseup, this),
-                'touchmove.asSwitcher': $.proxy(this.mousemove, this),
-                'touchend.asSwitcher': $.proxy(this.mouseup, this)
+                'mousemove.asSwitch': $.proxy(this.mousemove, this),
+                'mouseup.asSwitch': $.proxy(this.mouseup, this),
+                'touchmove.asSwitch': $.proxy(this.mousemove, this),
+                'touchend.asSwitch': $.proxy(this.mouseup, this)
             });
 
             if (this.options.clickable) {
-                this.$handle.one('mouseup.asSwitcher touchend.asSwitcher', function() {
+                this.$handle.one('mouseup.asSwitch touchend.asSwitch', function() {
                     if (self.checked) {
                         self.set(false);
                     } else {
                         self.set(true);
                     }
-                    $(document).off('.asSwitcher');
+                    $(document).off('.asSwitch');
                 });
             }
 
             return false;
         },
         check: function() {
-            if(this.checked !== true){
+            if (this.checked !== true) {
                 this.set(true);
             }
-            
+
             return this;
         },
         uncheck: function() {
-            if(this.checked !== false) {
+            if (this.checked !== false) {
                 this.set(false);
             }
-            
+
             return this;
         },
         set: function(value, update) {
@@ -231,7 +235,7 @@
 
             this.checked = value;
 
-            if(value === true){
+            if (value === true) {
                 this.animate(0, function() {
                     self.$wrap.removeClass(self.classes.off).addClass(self.classes.on);
                 });
@@ -241,12 +245,12 @@
                 });
             }
 
-            if(update !== false){
+            if (update !== false) {
                 this.$element.prop('checked', value);
                 this.$element.trigger('change');
-                this._trigger('change', value, this.options.name, 'asSwitcher');
+                this._trigger('change', value, this.options.name, 'asSwitch');
             }
-            
+
             return this;
         },
         get: function() {
@@ -272,13 +276,13 @@
             return this;
         },
         destroy: function() {
-            this.$wrap.off('.asSwitcher');
-            this.$handle.off('.asSwitcher');
+            this.$wrap.off('.asSwitch');
+            this.$handle.off('.asSwitch');
         }
     };
 
     AsSwitcher.defaults = {
-        namespace: 'asSwitcher',
+        namespace: 'asSwitch',
         skin: null,
 
         dragable: true,
@@ -292,7 +296,7 @@
         animation: 200
     };
 
-    $.fn.asSwitcher = function(options) {
+    $.fn.asSwitch = function(options) {
         if (typeof options === 'string') {
             var method = options;
             var method_arguments = Array.prototype.slice.call(arguments, 1);
@@ -300,13 +304,13 @@
             if (/^\_/.test(method)) {
                 return false;
             } else if ((/^(get)$/.test(method)) || (method === 'val' && method_arguments.length === 0)) {
-                var api = this.first().data('asSwitcher');
+                var api = this.first().data('asSwitch');
                 if (api && typeof api[method] === 'function') {
                     return api[method].apply(api, method_arguments);
                 }
             } else {
                 return this.each(function() {
-                    var api = $.data(this, 'asSwitcher');
+                    var api = $.data(this, 'asSwitch');
                     if (api && typeof api[method] === 'function') {
                         api[method].apply(api, method_arguments);
                     }
@@ -314,8 +318,8 @@
             }
         } else {
             return this.each(function() {
-                if (!$.data(this, 'asSwitcher')) {
-                    $.data(this, 'asSwitcher', new AsSwitcher(this, options));
+                if (!$.data(this, 'asSwitch')) {
+                    $.data(this, 'asSwitch', new AsSwitcher(this, options));
                 }
             });
         }

@@ -84,12 +84,12 @@ module.exports = function(grunt) {
                 "unescape_strings": false
             }
         },
-        
+
         // -- less Config ---------------------------------------------------------
         less: {
             dist: {
                 files: {
-                    'demo/css/asSwitcher.css': 'less/asSwitcher.less'
+                    'demo/css/asSwitch.css': 'less/asSwitch.less'
                 }
             }
         },
@@ -100,7 +100,7 @@ module.exports = function(grunt) {
                 browsers: ['last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12']
             },
             src: {
-                src: ['demo/css/asSwitcher.css'],
+                src: ['demo/css/asSwitch.css'],
             }
         },
 
@@ -115,7 +115,7 @@ module.exports = function(grunt) {
                 }]
             },
             jquery: {
-                src: ['asSwitcher.jquery.json'],
+                src: ['asSwitch.jquery.json'],
                 overwrite: true, // overwrite matched source files
                 replacements: [{
                     from: /("version": ")([0-9\.]+)(")/g,

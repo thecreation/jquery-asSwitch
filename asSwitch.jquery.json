@@ -1,0 +1,22 @@
+{
+    "name": "asSwitch",
+    "title": "jQuery asSwitch",
+    "description": "a iphone like jquery checkbox plugin",
+    "version": "0.1.1",
+    "author": {
+        "name": "amazingSurge",
+        "email": "amazingSurge@yahoo.com",
+        "url": "amazingSurge.com"
+    },
+    "bugs": "https://github.com/amazingSurge/jquery-asSwitch/issues",
+    "licenses": [{
+        "type": "GPL",
+        "url": "https://github.com/amazingSurge/jquery-asSwitch/blob/master/LICENSE-GPL"
+    }],
+    "bugs": "https://github.com/amazingSurge/jquery-asSwitch/issues",
+    "homepage": "https://github.com/amazingSurge/jquery-asSwitch",
+    "docs": "https://github.com/amazingSurge/jquery-asSwitch",
+    "dependencies": {
+        "jquery": ">= 1.8.3"
+    }
+}

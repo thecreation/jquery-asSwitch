@@ -1,7 +1,7 @@
 {
-    "name": "jquery-asSwitcher",
+    "name": "jquery-asSwitch",
     "version": "0.1.1",
-    "main": "dist/jquery-asSwitcher.js",
+    "main": "dist/jquery-asSwitch.js",
     "ignore": [
         "**/.*",
         "node_modules",

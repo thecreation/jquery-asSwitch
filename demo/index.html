@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>asSwitcher</title>
+        <title>asSwitch</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/prism.css">
         <link rel="stylesheet" href="css/main.css">       
-        <link rel="stylesheet" href="css/asSwitcher.css">
+        <link rel="stylesheet" href="css/asSwitch.css">
 
         
         <script src="js/vendor/jquery-1.9.1.min.js"></script>
@@ -22,7 +22,7 @@
         <script src="js/vendor/prism.js"></script>
         <script src="js/vendor/bootstrap.js"></script>
 
-        <script src="../src/jquery-asSwitcher.js"></script>
+        <script src="../src/jquery-asSwitch.js"></script>
         <style type="text/css">
             input {
                 display: block;
@@ -64,7 +64,7 @@
 &lt;input class="sw-3" type="checkbox" checked="checked" /&gt;
 &lt;script&gt;                   
     $(document).ready(function() {
-        $('.sw-3').asSwitcher({
+        $('.sw-3').asSwitch({
             skin: 'skin-3'
         });   
                       
@@ -79,7 +79,7 @@
                         $('.sw-3').on('change', function(){
                             alert(this.value);
                         });
-                        $('.sw-3').asSwitcher({
+                        $('.sw-3').asSwitch({
                             skin: 'skin-3'
                         });
 
@@ -94,7 +94,7 @@
                 <input class="sw-6" type="checkbox" checked="checked" />
                 <script>                   
                     $(document).ready(function() {                    
-                        $('.sw-6').asSwitcher({
+                        $('.sw-6').asSwitch({
                             skin: 'skin-6'
                         }); 
                                        
@@ -105,7 +105,7 @@
                 <input class="sw-9" type="checkbox" checked="checked" />
                 <script>                   
                     $(document).ready(function() {                    
-                        $('.sw-9').asSwitcher({
+                        $('.sw-9').asSwitch({
                             skin: 'skin-9'
                         }); 
                                        
@@ -121,7 +121,7 @@
 &lt;input class="sw-drag" type="checkbox" checked="checked" /&gt;
 &lt;script&gt;                   
     $(document).ready(function() {
-        $('.sw-drag').asSwitcher({
+        $('.sw-drag').asSwitch({
             dragable: true,
             clickable: false,
             skin: 'skin-6'
@@ -134,7 +134,7 @@
                 <input class="sw-drag" type="checkbox" checked="checked" />
                 <script>                   
                     $(document).ready(function() {
-                        $('.sw-drag').asSwitcher({
+                        $('.sw-drag').asSwitch({
                             dragable: true,
                             clickable: false,
                             skin: 'skin-6'
@@ -151,7 +151,7 @@
 &lt;input class="sw-click" type="checkbox" checked="checked" /&gt;
 &lt;script&gt;                   
     $(document).ready(function() {
-        $('.sw-click').asSwitcher({
+        $('.sw-click').asSwitch({
             dragable: false,
             clickable: true,
             skin: 'skin-6'
@@ -164,7 +164,7 @@
                 <input class="sw-click" type="checkbox" checked="checked" />
                 <script>                   
                     $(document).ready(function() {
-                        $('.sw-click').asSwitcher({
+                        $('.sw-click').asSwitch({
                             dragable: false,
                             clickable: true,
                             skin: 'skin-6'
@@ -183,16 +183,16 @@
                 <div class="consoleEvent" style="height:200px; overflow:hidden; border:1px solid #888;"></div>
                 <script>                   
                     $(document).ready(function() {
-                        $('.sw-event').on('asSwitcher::ready', function(event,instance) {
+                        $('.sw-event').on('asSwitch::ready', function(event,instance) {
                             var text = event.type + ': triggered';
                             $('<div>' + text + '</div>').prependTo('.consoleEvent');
                         });
-                        $('.sw-event').asSwitcher({
+                        $('.sw-event').asSwitch({
                             dragable: true,
                             clickable: true,
                             skin: 'skin-6'
                         });   
-                        $('.sw-event').on('asSwitcher::change', function(event,instance) {
+                        $('.sw-event').on('asSwitch::change', function(event,instance) {
                             var text = event.type + ': triggered, the value is ' + instance.checked;
                             $('<div>' + text + '</div>').prependTo('.consoleEvent');
                         });         

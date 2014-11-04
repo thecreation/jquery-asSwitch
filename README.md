@@ -1,14 +1,14 @@
-# jQuery asSwitcher
+# jQuery asSwitch
 
-The powerful jQuery plugin that creates a asSwitcher. 
-Download: <a href="https://github.com/amazingSurge/jquery-asSwitcher/archive/master.zip">jquery-asSwitcher-master.zip</a>
+The powerful jQuery plugin that creates a asSwitch. 
+Download: <a href="https://github.com/amazingSurge/jquery-asSwitch/archive/master.zip">jquery-asSwitch-master.zip</a>
 
 ***
 
 ## Features
 
-* **Different styles support** — The plugin provides different styles of asSwitcher
-* **Different devices support** — asSwitcher can be used on the PC and touch device
+* **Different styles support** — The plugin provides different styles of asSwitch
+* **Different devices support** — asSwitch can be used on the PC and touch device
 * **Lightweight size** — 1 kb gzipped
 
 ## Dependencies
@@ -18,10 +18,10 @@ Download: <a href="https://github.com/amazingSurge/jquery-asSwitcher/archive/mas
 
 Import this libraries:
 * jQuery
-* jquery-asSwitcher.js
+* jquery-asSwitch.js
 
 And CSS:
-* asSwitcher.css - desirable if you have not yet connected one
+* asSwitch.css - desirable if you have not yet connected one
 
 
 Create base html element:
@@ -33,12 +33,12 @@ Create base html element:
 
 Initialize tabs:
 ```javascript
-$(".sw-3").asSwitcher();
+$(".sw-3").asSwitch();
 ```
 
 Or initialize tabs with custom settings:
 ```javascript
-$(".sw-3").asSwitcher({
+$(".sw-3").asSwitch({
     dragable: true,
     clickable: true,
     disabled: false,
@@ -69,19 +69,19 @@ the most important thing is you should set skin value to let plugin find his shi
     //Optional property, if false the function of click will be stop
     clickable: true,
 
-    //Optional property, if true the asSwitcher can't be used
+    //Optional property, if true the asSwitch can't be used
     disabled: false,
 
-    //Optional property, the text display when asSwitcher is opened
+    //Optional property, the text display when asSwitch is opened
     ontext: 'ON',
 
-    //Optional property, the text display when asSwitcher is closed
+    //Optional property, the text display when asSwitch is closed
     offtext: 'OFF',
 
-    //Optional property, if true, the asSwitcher will be open when initialize
+    //Optional property, if true, the asSwitch will be open when initialize
     checked: true,
 
-    //Optional property, set the duration time when the asSwitcher from one state to anther
+    //Optional property, set the duration time when the asSwitch from one state to anther
     animation: 200,
 
     //Optional property, set a namespace for css class
@@ -90,23 +90,23 @@ the most important thing is you should set skin value to let plugin find his shi
 
 ## Public methods
 
-jquery asSwitcher has different methods , we can use it as below :
+jquery asSwitch has different methods , we can use it as below :
 ```javascript
 
 // set the state of switch
-$(".sw-3").asSwitcher("set");
+$(".sw-3").asSwitch("set");
 
 // get the current state of switch
-$(".sw-3").asSwitcher("get");
+$(".sw-3").asSwitch("get");
 
-// add a enable class to asSwitcher elment
-$(".sw-3").asSwitcher("enable");
+// add a enable class to asSwitch elment
+$(".sw-3").asSwitch("enable");
 
 // remove the enable class
-$(".sw-3").asSwitcher("disable");
+$(".sw-3").asSwitch("disable");
 
-// remove asSwitcher Dom emement and unbound all events 
-$(".sw-3").asSwitcher("destroy");
+// remove asSwitch Dom emement and unbound all events 
+$(".sw-3").asSwitch("destroy");
 
 ```
 
@@ -118,7 +118,7 @@ $(".sw-3").asSwitcher("destroy");
 how to use event:
 ```javascript
 $(document).on('checked', function(event,instance) {
-    // instance means current asSwitcher instance 
+    // instance means current asSwitch instance 
     // some stuff
 });
 ```
@@ -132,4 +132,4 @@ Mobile browsers (like Opera mini, Chrome mobile, Safari mobile, Android browser 
 [amazingSurge](http://amazingSurge.com)
 
 ## License
-jQuery-asSwitcher plugin is released under the <a href="https://github.com/amazingSurge/jquery-asSwitcher/blob/master/LICENCE.GPL" target="_blank">GPL licence</a>.
+jQuery-asSwitch plugin is released under the <a href="https://github.com/amazingSurge/jquery-asSwitch/blob/master/LICENCE.GPL" target="_blank">GPL licence</a>.
