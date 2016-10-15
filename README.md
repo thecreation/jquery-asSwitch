@@ -1,135 +1,276 @@
-# jQuery asSwitch
+# [jQuery asSwitch](https://github.com/amazingSurge/jquery-asSwitch) ![bower][bower-image] [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url] [![prs-welcome]](#contributing)
 
-The powerful jQuery plugin that creates a asSwitch. 
-Download: <a href="https://github.com/amazingSurge/jquery-asSwitch/archive/master.zip">jquery-asSwitch-master.zip</a>
+> A jquery plugin that create a switchable toggle.
 
-***
+## Table of contents
+- [Main files](#main-files)
+- [Quick start](#quick-start)
+- [Requirements](#requirements)
+- [Usage](#usage)
+- [Examples](#examples)
+- [Options](#options)
+- [Methods](#methods)
+- [Events](#events)
+- [No conflict](#no-conflict)
+- [Browser support](#browser-support)
+- [Contributing](#contributing)
+- [Development](#development)
+- [Changelog](#changelog)
+- [Copyright and license](#copyright-and-license)
 
-## Features
+## Main files
+```
+dist/
+├── jquery-asSwitch.js
+├── jquery-asSwitch.es.js
+├── jquery-asSwitch.min.js
+└── css/
+    ├── asSwitch.css
+    └── asSwitch.min.css
+```
 
-* **Different styles support** — The plugin provides different styles of asSwitch
-* **Different devices support** — asSwitch can be used on the PC and touch device
-* **Lightweight size** — 1 kb gzipped
+## Quick start
+Several quick start options are available:
+#### Download the latest build
 
-## Dependencies
-* <a href="http://jquery.com/" target="_blank">jQuery 1.83+</a>
+ * [Development](https://raw.githubusercontent.com/amazingSurge/jquery-asSwitch/master/dist/jquery-asSwitch.js) - unminified
+ * [Production](https://raw.githubusercontent.com/amazingSurge/jquery-asSwitch/master/dist/jquery-asSwitch.min.js) - minified
+
+#### Install From Bower
+```sh
+bower install jquery-asSwitch --save
+```
+
+#### Install From Npm
+```sh
+npm install jquery-asSwitch --save
+```
+
+#### Build From Source
+If you want build from source:
+
+```sh
+git clone git@github.com:amazingSurge/jquery-asSwitch.git
+cd jquery-asSwitch
+npm install
+npm install -g gulp-cli babel-cli
+gulp build
+```
+
+Done!
+
+## Requirements
+`jquery-asSwitch` requires the latest version of [`jQuery`](https://jquery.com/download/).
 
 ## Usage
+#### Including files:
 
-Import this libraries:
-* jQuery
-* jquery-asSwitch.js
-
-And CSS:
-* asSwitch.css - desirable if you have not yet connected one
-
-
-Create base html element:
 ```html
-    <div class="example">
-        <input class="sw-3" type="checkbox" checked="checked" />
-    </div>
+<link rel="stylesheet" href="/path/to/asSwitch.css">
+<script src="/path/to/jquery.js"></script>
+<script src="/path/to/jquery-asSwitch.js"></script>
 ```
 
-Initialize tabs:
-```javascript
-$(".sw-3").asSwitch();
+#### Required HTML structure
+
+```html
+<input class="example" type="checkbox" checked="checked" />
 ```
 
-Or initialize tabs with custom settings:
+#### Initialization
+All you need to do is call the plugin on the element:
+
 ```javascript
-$(".sw-3").asSwitch({
-    dragable: true,
-    clickable: true,
-    disabled: false,
-    ontext: 'ON',
-    offtext: 'OFF',
-    checked: true,
-    animation: 200,
-    namespace: 'switch'
+jQuery(function($) {
+  $('.example').asSwitch(); 
 });
 ```
 
-the most important thing is you should set skin value to let plugin find his shin content
+## Examples
+There are some example usages that you can look at to get started. They can be found in the
+[examples folder](https://github.com/amazingSurge/jquery-asSwitch/tree/master/examples).
 
-
-
-
-## Settings
-
-```javascript
-{   
-
-    // Compulsory property,it works after you load  the specified skin file
-    skin: null,
-    
-    //Optional property, if false the function of dragable will be stop
-    dragable: true,
-
-    //Optional property, if false the function of click will be stop
-    clickable: true,
-
-    //Optional property, if true the asSwitch can't be used
-    disabled: false,
-
-    //Optional property, the text display when asSwitch is opened
-    ontext: 'ON',
-
-    //Optional property, the text display when asSwitch is closed
-    offtext: 'OFF',
-
-    //Optional property, if true, the asSwitch will be open when initialize
-    checked: true,
-
-    //Optional property, set the duration time when the asSwitch from one state to anther
-    animation: 200,
-
-    //Optional property, set a namespace for css class
-    namespace: 'switch'
-```
-
-## Public methods
-
-jquery asSwitch has different methods , we can use it as below :
-```javascript
-
-// set the state of switch
-$(".sw-3").asSwitch("set");
-
-// get the current state of switch
-$(".sw-3").asSwitch("get");
-
-// add a enable class to asSwitch elment
-$(".sw-3").asSwitch("enable");
-
-// remove the enable class
-$(".sw-3").asSwitch("disable");
-
-// remove asSwitch Dom emement and unbound all events 
-$(".sw-3").asSwitch("destroy");
+## Options
+`jquery-asSwitch` can accept an options object to alter the way it behaves. You can see the default options by call `$.asSwitch.setDefaults()`. The structure of an options object is as follows:
 
 ```
+{
+  namespace: 'asSwitch',
 
-## Event / Callback
+  skin: null,
+  handleSelector: null,
+  handleTemplate: '<div class="{{handle}}"></div>',
 
-* <code>checked</code>: trigger when the switch is opened
-* <code>unchecked</code>: trigger when the switch is close
+  barClass: null,
+  handleClass: null,
 
-how to use event:
+  disabledClass: 'is-disabled',
+  draggingClass: 'is-dragging',
+  hoveringClass: 'is-hovering',
+
+  direction: 'vertical',
+
+  barLength: null,
+  handleLength: null,
+
+  minHandleLength: 30,
+  maxHandleLength: null,
+
+  mouseDrag: true,
+  touchDrag: true,
+  pointerDrag: true,
+  clickMove: true,
+  clickMoveStep: 0.3, // 0 - 1
+  mousewheel: true,
+  mousewheelSpeed: 50,
+
+  keyboard: true,
+
+  useCssTransforms3d: true,
+  useCssTransforms: true,
+  useCssTransitions: true,
+
+  duration: '500',
+  easing: 'ease' // linear, ease-in, ease-out, ease-in-out
+}
+```
+
+## Methods
+Methods are called on asSwitch instances through the asSwitch method itself.
+You can also save the instances to variable for further use.
+
 ```javascript
-$(document).on('checked', function(event,instance) {
-    // instance means current asSwitch instance 
-    // some stuff
+// call directly
+$().asSwitch('destory');
+
+// or
+var api = $().data('asSwitch');
+api.destory();
+```
+
+#### val(value)
+Set the switch value if value is defined or get the value.
+```javascript
+// set the val
+$().asSwitch('val', true);
+
+// get the val
+var value = $().asSwitch('val');
+```
+
+#### set(value)
+Set the switch value
+```javascript
+$().asSwitch('set', true);
+```
+
+#### get()
+Get the switch value.
+```javascript
+var value = $().asSwitch('get');
+```
+
+#### enable()
+Enable the scrollbar functions.
+```javascript
+$().asSwitch('enable');
+```
+
+#### disable()
+Disable the switch functions.
+```javascript
+$().asSwitch('disable');
+```
+
+#### destroy()
+Destroy the switch instance.
+```javascript
+$().asSwitch('destroy');
+```
+
+## Events
+`jquery-asSwitch` provides custom events for the plugin’s unique actions. 
+
+```javascript
+$('.the-element').on('asSwitch::ready', function (e) {
+  // on instance ready
 });
+
+```
+
+Event     | Description
+--------- | -----------
+init      | Fires when the instance is setup for the first time.
+ready     | Fires when the instance is ready for API use.
+enable    | Fired when the `enable` instance method has been called.
+disable   | Fired when the `disable` instance method has been called.
+checked   | Fired when the switch is checked.
+unchecked | Fired when the switch is unchecked.
+destroy   | Fires when an instance is destroyed. 
+
+## No conflict
+If you have to use other plugin with the same namespace, just call the `$.asSwitch.noConflict` method to revert to it.
+
+```html
+<script src="other-plugin.js"></script>
+<script src="jquery-asSwitch.js"></script>
+<script>
+  $.asSwitch.noConflict();
+  // Code that uses other plugin's "$().asSwitch" can follow here.
+</script>
 ```
 
 ## Browser support
-jquery-tabs is verified to work in Internet Explorer 7+, Firefox 2+, Opera 9+, Google Chrome and Safari browsers. Should also work in many others.
 
-Mobile browsers (like Opera mini, Chrome mobile, Safari mobile, Android browser and others) is coming soon.
+Tested on all major browsers.
 
-## Author
-[amazingSurge](http://amazingSurge.com)
+| <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/safari/safari_32x32.png" alt="Safari"> | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/chrome/chrome_32x32.png" alt="Chrome"> | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/firefox/firefox_32x32.png" alt="Firefox"> | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/edge/edge_32x32.png" alt="Edge"> | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/internet-explorer/internet-explorer_32x32.png" alt="IE"> | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/opera/opera_32x32.png" alt="Opera"> |
+|:--:|:--:|:--:|:--:|:--:|:--:|
+| Latest ✓ | Latest ✓ | Latest ✓ | Latest ✓ | 9-11 ✓ | Latest ✓ |
 
-## License
-jQuery-asSwitch plugin is released under the <a href="https://github.com/amazingSurge/jquery-asSwitch/blob/master/LICENCE.GPL" target="_blank">GPL licence</a>.
+As a jQuery plugin, you also need to see the [jQuery Browser Support](http://jquery.com/browser-support/).
+
+## Contributing
+Anyone and everyone is welcome to contribute. Please take a moment to
+review the [guidelines for contributing](CONTRIBUTING.md). Make sure you're using the latest version of `jquery-asSwitch` before submitting an issue. There are several ways to help out:
+
+* [Bug reports](CONTRIBUTING.md#bug-reports)
+* [Feature requests](CONTRIBUTING.md#feature-requests)
+* [Pull requests](CONTRIBUTING.md#pull-requests)
+* Write test cases for open bug issues
+* Contribute to the documentation
+
+## Development
+`jquery-asSwitch` is built modularly and uses Gulp as a build system to build its distributable files. To install the necessary dependencies for the build system, please run:
+
+```sh
+npm install -g gulp
+npm install -g babel-cli
+npm install
+```
+
+Then you can generate new distributable files from the sources, using:
+```
+gulp build
+```
+
+More gulp tasks can be found [here](CONTRIBUTING.md#available-tasks).
+
+## Changelog
+To see the list of recent changes, see [Releases section](https://github.com/amazingSurge/jquery-asSwitch/releases).
+
+## Copyright and license
+Copyright (C) 2016 amazingSurge.
+
+Licensed under [the LGPL license](LICENSE).
+
+[⬆ back to top](#table-of-contents)
+
+[bower-image]: https://img.shields.io/bower/v/jquery-asSwitch.svg?style=flat
+[bower-link]: https://david-dm.org/amazingSurge/jquery-asSwitch/dev-status.svg
+[npm-image]: https://badge.fury.io/js/jquery-asSwitch.svg?style=flat
+[npm-url]: https://npmjs.org/package/jquery-asSwitch
+[license]: https://img.shields.io/npm/l/jquery-asSwitch.svg?style=flat
+[prs-welcome]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
+[daviddm-image]: https://david-dm.org/amazingSurge/jquery-asSwitch.svg?style=flat
+[daviddm-url]: https://david-dm.org/amazingSurge/jquery-asSwitch
