@@ -1,0 +1,48 @@
+// core
+.asSwitch {
+  position: relative;
+  display: inline-block;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  > input {
+    display: none;
+  }
+
+  .asSwitch-inner {
+    overflow: hidden;
+  }
+
+  // .asSwitch-inner-box {
+  //   position: relative;
+  // }
+
+  .asSwitch-on {
+    display: block;
+    float: left;
+
+    user-select: none;
+  }
+
+  .asSwitch-off {
+    display: block;
+    float: left;
+
+    user-select: none;
+  }
+
+  .asSwitch-handle {
+    position: absolute;
+    top: 0;
+
+    &:hover {
+      cursor: pointer;
+      cursor: -moz-grab;
+    }
+  }
+}
+
+@import "default";
+@import "iphone";

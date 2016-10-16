@@ -1,5 +1,5 @@
 /**
-* jquery asSwitch v0.2.0
+* jquery asSwitch v0.2.1
 * https://github.com/amazingSurge/jquery-asSwitch
 *
 * Copyright (c) amazingSurge
@@ -443,7 +443,7 @@
     }();
 
     var info = {
-      version: '0.2.0'
+      version: '0.2.1'
     };
 
     var NAMESPACE = 'asSwitch';
@@ -465,7 +465,7 @@
             return {
               v: false
             };
-          } else if (/^(get)/.test(method)) {
+          } else if (/^(get)$/.test(method) || method === 'val' && method_arguments.length === 0) {
             var instance = _this.first().data(NAMESPACE);
 
             if (instance && typeof instance[method] === 'function') {

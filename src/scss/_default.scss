@@ -1,0 +1,86 @@
+// default skin
+$switch-default-Height: 26px;
+$switch-default-Width: 68px;
+$switch-default-HandleWidth: 26px;
+$switch-default-BoxWidth: ( $switch-default-Width - ( $switch-default-HandleWidth / 2) ) * 2;
+$switch-default-OnWidth: $switch-default-Width - ( $switch-default-HandleWidth / 2);
+$switch-default-OffWidth: $switch-default-Width - ( $switch-default-HandleWidth / 2);
+
+$switch-default-OnBgColor: #7ebdcb;
+$switch-default-OffBgColor: #cfcdc7;
+$switch-default-HandleBgColor: #fff;
+
+$switch-default-TextColor: #fff;
+
+$switch-default-FontSize: 14px;
+
+.asSwitch.asSwitch_default {
+  height: $switch-default-Height;
+  width: $switch-default-Width;
+
+  border-radius: 3px;
+
+  .asSwitch-inner-box {
+    height: $switch-default-Height;
+    width: $switch-default-BoxWidth;
+  }
+
+  .asSwitch-on {
+    height: $switch-default-Height;
+    width: $switch-default-OnWidth;
+    text-indent: 13px;
+    line-height: $switch-default-Height;
+    font-size: $switch-default-FontSize;
+    color: $switch-default-TextColor;
+    background-color: $switch-default-OnBgColor;
+  }
+  .asSwitch-off {
+    height: $switch-default-Height;
+    width: $switch-default-OffWidth;
+    text-indent: 24px;
+    line-height: $switch-default-Height;
+    font-size: $switch-default-FontSize;
+    color: $switch-default-TextColor;
+    background-color: $switch-default-OffBgColor;
+  }
+  .asSwitch-handle {
+    width: $switch-default-HandleWidth;
+    height: $switch-default-Height;
+    background-color: $switch-default-HandleBgColor;
+
+    border-radius: 3px;
+  }
+
+  &.is-on {
+    background-color: $switch-default-OnBgColor;
+    border: 2px solid $switch-default-OnBgColor;
+    .asSwitch-inner-box {
+      margin-left: 0;
+    }
+
+    .asSwitch-off {
+      background-color: $switch-default-OnBgColor;
+    }
+
+    .asSwitch-handle {
+      left: $switch-default-Width - $switch-default-HandleWidth;
+    }
+  }
+
+  &.is-off {
+      background-color: $switch-default-OffBgColor;
+      border: 2px solid $switch-default-OffBgColor;
+
+    .asSwitch-inner-box {
+      margin-left: $switch-default-HandleWidth - $switch-default-Width;
+    }
+
+    .asSwitch-on {
+      background-color: $switch-default-OffBgColor;
+    }
+
+    .asSwitch-handle {
+      left: 0;
+    }
+  }
+}

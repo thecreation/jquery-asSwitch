@@ -1,28 +1,7 @@
-/**
-* jquery asSwitch v0.2.1
-* https://github.com/amazingSurge/jquery-asSwitch
-*
-* Copyright (c) amazingSurge
-* Released under the LGPL-3.0 license
-*/
 import $ from 'jquery';
+import DEFAULTS from './defaults';
 
-var DEFAULTS = {
-  namespace: 'asSwitch',
-  skin: 'default',
-
-  dragable: true,
-  clickable: true,
-  disabled: false,
-
-  onText: 'ON',
-  offText: 'OFF',
-
-  checked: true,
-  animation: 200
-};
-
-const NAMESPACE$1 = 'asSwitch';
+const NAMESPACE = 'asSwitch';
 
 /**
  * Plugin constructor
@@ -104,7 +83,7 @@ class asSwitch {
     let data = [this].concat(...params);
 
     // event
-    this.$element.trigger(`${NAMESPACE$1}::${eventType}`, data);
+    this.$element.trigger(`${NAMESPACE}::${eventType}`, data);
 
     // callback
     eventType = eventType.replace(/\b\w+\b/g, (word) => {
@@ -315,47 +294,4 @@ class asSwitch {
   }
 }
 
-var info = {
-  version:'0.2.1'
-};
-
-const NAMESPACE = 'asSwitch';
-const OtherAsSwitch = $.fn.asSwitch;
-
-const jQueryAsSwitch = function(options, ...args) {
-  if (typeof options === 'string') {
-    const method = options;
-
-    if (/^_/.test(method)) {
-      return false;
-    } else if ((/^(get)$/.test(method)) || (method === 'val' && method_arguments.length === 0)) {
-      const instance = this.first().data(NAMESPACE);
-      if (instance && typeof instance[method] === 'function') {
-        return instance[method](...args);
-      }
-    } else {
-      return this.each(function() {
-        const instance = $.data(this, NAMESPACE);
-        if (instance && typeof instance[method] === 'function') {
-          instance[method](...args);
-        }
-      });
-    }
-  }
-
-  return this.each(function() {
-    if (!$(this).data(NAMESPACE)) {
-      $(this).data(NAMESPACE, new asSwitch(this, options));
-    }
-  });
-};
-
-$.fn.asSwitch = jQueryAsSwitch;
-
-$.asSwitch = $.extend({
-  setDefaults: asSwitch.setDefaults,
-  noConflict: function() {
-    $.fn.asSwitch = OtherAsSwitch;
-    return jQueryAsSwitch;
-  }
-}, info);
+export default asSwitch;
