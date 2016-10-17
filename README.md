@@ -46,6 +46,11 @@ bower install jquery-asSwitch --save
 npm install jquery-asSwitch --save
 ```
 
+#### Install From Yarn
+```sh
+yarn add jquery-asSwitch
+```
+
 #### Build From Source
 If you want build from source:
 
@@ -141,11 +146,11 @@ You can also save the instances to variable for further use.
 
 ```javascript
 // call directly
-$().asSwitch('destory');
+$().asSwitch('destroy');
 
 // or
 var api = $().data('asSwitch');
-api.destory();
+api.destroy();
 ```
 
 #### val(value)

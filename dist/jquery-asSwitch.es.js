@@ -1,5 +1,5 @@
 /**
-* jquery asSwitch v0.2.1
+* jquery asSwitch v0.2.2
 * https://github.com/amazingSurge/jquery-asSwitch
 *
 * Copyright (c) amazingSurge
@@ -101,7 +101,7 @@ class asSwitch {
   }
 
   _trigger(eventType, ...params) {
-    let data = [this].concat(...params);
+    let data = [this].concat(params);
 
     // event
     this.$element.trigger(`${NAMESPACE$1}::${eventType}`, data);
@@ -113,7 +113,7 @@ class asSwitch {
     let onFunction = `on${eventType}`;
 
     if (typeof this.options[onFunction] === 'function') {
-      this.options[onFunction].apply(this, ...params);
+      this.options[onFunction].apply(this, params);
     }
   }
 
@@ -273,7 +273,7 @@ class asSwitch {
     if (update !== false) {
       this.$element.prop('checked', value);
       this.$element.trigger('change');
-      this._trigger('change', value, this.options.name, 'asSwitch');
+      this._trigger('change', value);
     }
 
     return this;
@@ -316,7 +316,7 @@ class asSwitch {
 }
 
 var info = {
-  version:'0.2.1'
+  version:'0.2.2'
 };
 
 const NAMESPACE = 'asSwitch';
@@ -328,7 +328,7 @@ const jQueryAsSwitch = function(options, ...args) {
 
     if (/^_/.test(method)) {
       return false;
-    } else if ((/^(get)$/.test(method)) || (method === 'val' && method_arguments.length === 0)) {
+    } else if ((/^(get)$/.test(method)) || (method === 'val' && args.length === 0)) {
       const instance = this.first().data(NAMESPACE);
       if (instance && typeof instance[method] === 'function') {
         return instance[method](...args);

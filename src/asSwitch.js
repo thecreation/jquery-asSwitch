@@ -80,7 +80,7 @@ class asSwitch {
   }
 
   _trigger(eventType, ...params) {
-    let data = [this].concat(...params);
+    let data = [this].concat(params);
 
     // event
     this.$element.trigger(`${NAMESPACE}::${eventType}`, data);
@@ -92,7 +92,7 @@ class asSwitch {
     let onFunction = `on${eventType}`;
 
     if (typeof this.options[onFunction] === 'function') {
-      this.options[onFunction].apply(this, ...params);
+      this.options[onFunction].apply(this, params);
     }
   }
 
@@ -252,7 +252,7 @@ class asSwitch {
     if (update !== false) {
       this.$element.prop('checked', value);
       this.$element.trigger('change');
-      this._trigger('change', value, this.options.name, 'asSwitch');
+      this._trigger('change', value);
     }
 
     return this;
