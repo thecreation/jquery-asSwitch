@@ -1,5 +1,5 @@
 /**
-* jquery asSwitch v0.2.2
+* jquery asSwitch v0.2.3
 * https://github.com/amazingSurge/jquery-asSwitch
 *
 * Copyright (c) amazingSurge
@@ -316,7 +316,7 @@ class asSwitch {
 }
 
 var info = {
-  version:'0.2.2'
+  version:'0.2.3'
 };
 
 const NAMESPACE = 'asSwitch';

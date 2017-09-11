@@ -1,18 +1,18 @@
 // default skin
-$switch-default-Height: 26px;
-$switch-default-Width: 68px;
-$switch-default-HandleWidth: 26px;
-$switch-default-BoxWidth: ( $switch-default-Width - ( $switch-default-HandleWidth / 2) ) * 2;
-$switch-default-OnWidth: $switch-default-Width - ( $switch-default-HandleWidth / 2);
-$switch-default-OffWidth: $switch-default-Width - ( $switch-default-HandleWidth / 2);
+$switch-default-Height: 26px !default;
+$switch-default-Width: 68px !default;
+$switch-default-HandleWidth: 26px !default;
+$switch-default-BoxWidth: ( $switch-default-Width - ( $switch-default-HandleWidth / 2) ) * 2 !default;
+$switch-default-OnWidth: $switch-default-Width - ( $switch-default-HandleWidth / 2) !default;
+$switch-default-OffWidth: $switch-default-Width - ( $switch-default-HandleWidth / 2) !default;
 
-$switch-default-OnBgColor: #7ebdcb;
-$switch-default-OffBgColor: #cfcdc7;
-$switch-default-HandleBgColor: #fff;
+$switch-default-OnBgColor: #7ebdcb !default;
+$switch-default-OffBgColor: #cfcdc7 !default;
+$switch-default-HandleBgColor: #fff !default;
 
-$switch-default-TextColor: #fff;
+$switch-default-TextColor: #fff !default;
 
-$switch-default-FontSize: 14px;
+$switch-default-FontSize: 14px !default;
 
 .asSwitch.asSwitch_default {
   height: $switch-default-Height;

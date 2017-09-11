@@ -1,17 +1,17 @@
 // iphone skin
-$switch-iPhone-Height: 30px;
-$switch-iPhone-Width: 82px;
-$switch-iPhone-HandleWidth: 30px;
+$switch-iPhone-Height: 30px !default;
+$switch-iPhone-Width: 82px !default;
+$switch-iPhone-HandleWidth: 30px !default;
 
-$switch-iPhone-BoxWidth: ( $switch-iPhone-Width - ( $switch-iPhone-HandleWidth / 2) ) * 2;
-$switch-iPhone-OnWidth: $switch-iPhone-Width - ( $switch-iPhone-HandleWidth / 2);
-$switch-iPhone-OffWidth: $switch-iPhone-Width - ( $switch-iPhone-HandleWidth / 2);
+$switch-iPhone-BoxWidth: ( $switch-iPhone-Width - ( $switch-iPhone-HandleWidth / 2) ) * 2 !default;
+$switch-iPhone-OnWidth: $switch-iPhone-Width - ( $switch-iPhone-HandleWidth / 2) !default;
+$switch-iPhone-OffWidth: $switch-iPhone-Width - ( $switch-iPhone-HandleWidth / 2) !default;
 
-$switch-iPhone-OnBgColor: #40a5ec;
-$switch-iPhone-OffBgColor: #888;
-$switch-iPhone-HandleBgColor: #fff;
+$switch-iPhone-OnBgColor: #40a5ec !default;
+$switch-iPhone-OffBgColor: #888 !default;
+$switch-iPhone-HandleBgColor: #fff !default;
 
-$switch-iPhone-FontSize: 14px;
+$switch-iPhone-FontSize: 14px !default;
 
 
 .asSwitch.asSwitch_iphone {
